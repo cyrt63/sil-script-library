@@ -2,8 +2,8 @@
 > Real business use cases... pre-scripted!
 
 This repository contains [Simple Issue Language (SIL)](https://confluence.cprime.io/display/SIL)
-sample scripts for use within The Power Portfolio suite of Atlassian
-Marketplace apps. These apps include:
+sample scripts for use within [The Power Portfolio](https://www.cprimeapps.com/)
+suite of Atlassian Marketplace apps. These apps include:
 * [Power Scripts for JIRA](https://marketplace.atlassian.com/plugins/com.keplerrominfo.jira.plugins.jjupin/server/overview)
 * [Power Actions for JIRA](https://marketplace.atlassian.com/plugins/com.keplerrominfo.jira.plugins.blitz-actions/server/overview)
 * [Power Custom Fields](https://marketplace.atlassian.com/plugins/com.keplerrominfo.jira.plugins.keplercf/server/overview)
@@ -42,7 +42,7 @@ installed in default directories with default user:group as defined in
 >> sudo chmod 640 /var/atlassian/application-data/jira/silprograms/*
 ```
 
-Please note that this operation *will overwrite* any directories or files
+Please note that this operation **will overwrite** any directories or files
 that you may already have on your application server if identical names are
 found. Continue reading for a more manual, selective approach.
 
@@ -51,6 +51,23 @@ found. Continue reading for a more manual, selective approach.
 The brute force method will work in a pinch if you want to be selective about
 which scripts to include in your instance and/or don't want to worry about
 the potential of overwriting any scripts you may already have in your instance.
+
+## Folder structure / layout
+
+### Important Note
+
+The following sub-features must have scripts in the
+root ```silprograms``` directory.
+* Live Field listener scripts
+* Live Field executor scripts
+* silJQL scripts
+
+Scripts invoked from any other triggering mechanism can be called from any
+arbitrary directory hierarchy.
+
+### How to navigate the script folder structure layout
+
+TBD. Will include this after scripts are aggregated.
 
 ## Further documentation
 
@@ -66,14 +83,15 @@ the potential of overwriting any scripts you may already have in your instance.
 
 If you've solved a unique business request utilizing SIL in conjunction with
 any app from The Power Portfolio, we'd love to hear from you! We're willing to
-bet that many others in the Atlassian Community would love to hear from you as
-well. To showcase your script, please [create a discussion topic](https://community.atlassian.com/t5/forums/postpage/choose-node/true/interaction-style/forum?add-tags=sil-scripts-library)
+bet that many others in the [Atlassian Community](https://community.atlassian.com/)
+would love to hear from you as well. To showcase your script, please
+[create a discussion topic](https://community.atlassian.com/t5/forums/postpage/choose-node/true/interaction-style/forum?add-tags=sil-script-library)
 and be sure to include:
 
 1. The request. What business need were you trying to solve?
 2. The app. Which Power Suite app(s) did you use to solve the need?
 3. The script. Please use the code editor in your discussion.
-4. The tag. Please tag the discussion with ```shell sil-script-library ```
+4. The tag. Please tag the discussion with ```sil-script-library```
 
 If the business case seems common enough, we will be happy to upload it to
 this repository so that others can benefit from your hard work. You will
