@@ -88,12 +88,13 @@ would love to hear from you as well. To showcase your script, please
 [create a discussion topic](https://community.atlassian.com/t5/forums/postpage/choose-node/true/interaction-style/forum?add-tags=sil-script-library)
 and be sure to include:
 
-1. The request. What business need were you trying to solve?
-2. The app. Which Power Suite app(s) did you use to solve the need?
-3. The script. Please use the code editor in your discussion.
-4. The tag. Please tag the discussion with ```sil-script-library```
+1. **The request**. What business need were you trying to solve?
+2. **The app**. Which Power Suite app(s) did you use to solve the need?
+3. **The script**. Please use the code editor in your discussion.
+4. **The comments**. Please comment your code so newbies can follow along!
+5. **The tag**. Please tag the discussion with ```sil-script-library```
 
-If the business case seems common enough, we will be happy to upload it to
+If the business case seems common enough, we'd be honored to upload it to
 this repository so that others can benefit from your hard work. You will
 receive full attribution in the script comments, and we'll be happy to give
 you an upvote to bolster your community cred!
