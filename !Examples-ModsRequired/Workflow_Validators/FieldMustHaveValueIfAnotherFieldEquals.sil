@@ -1,0 +1,14 @@
+/*
+Use this script as a workflow transition validator to allow transition only if
+a field has been populated when another field is set.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* customfield_10100 (customField)
+* customfield_10200 (customField)
+*/
+
+string errorMsg = "The Address field is required.";
+if(customfield_10100 == "Yes" && !hasInput("customfield_10200")) {
+   return false, "customfield_10200", errorMsg;
+}

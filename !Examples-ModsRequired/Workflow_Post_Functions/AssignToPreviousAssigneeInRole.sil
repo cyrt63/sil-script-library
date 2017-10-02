@@ -1,0 +1,25 @@
+/*
+Call this script from a workflow transition post-function.
+It will set the assignee to the most recent previous assignee who is a member
+of a specific project role.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Developers" (projectRole)
+*/
+
+string project_role = "Developers";
+string[] previous_assignees = fieldHistory(key, "assignee");
+
+for(number i = size(previous_assignees) - 1; i > 0; i -= 2) {
+    string user = getElement(previous_assignees, i);
+    if(user != assignee && isUserInRole(user, project, project_role)) {
+       assignee = user;
+       return;
+    }
+}
+
+//Optionally you can check and consider also reporter if no previous assignee was found with the specified role
+if(reporter != assignee && isUserInRole(reporter, project, project_role)) {
+   assignee = reporter;
+}

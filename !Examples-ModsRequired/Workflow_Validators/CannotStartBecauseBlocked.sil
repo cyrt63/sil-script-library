@@ -1,0 +1,18 @@
+/*
+Use this script as a workflow transition validator to disallow transition if
+the issue is blocked by another issue that is not yet resolved or closed.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Resolved" / "Closed" (status)
+* "Blocks" (linkType)
+*/
+
+string errorMsg = "Progress can't start because there is at least one blocking issue.";
+string[] statuses = {"Resolved", "Closed"};
+string[] blockingIssues = linkedIssues(key, "Blocks");
+for(string issue in blockingIssues) {
+    if(!elementExists(statuses, %issue%.status)) {
+       return false, errorMsg;
+    }
+}

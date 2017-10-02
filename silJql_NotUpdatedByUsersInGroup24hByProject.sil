@@ -1,0 +1,22 @@
+/*
+This script is used in silJQL to return a list of all issues where users in
+a specified group have not updated the issue in the past 24 hours.
+Use with silJQLList.
+Example: key in silJQLList("silJql_NotUpdatedByUsersInGroup24hByProject.sil", PROJ, jira-developers)
+*/
+
+string [] keys = selectIssues("project = " + argv[0]);
+string [] ret;
+for(string k in keys) {
+    boolean updatedByUsersInGroup = false;
+    JFieldChange [] changes = lastIssueChanges(k);
+    for(number i = 0; i < size(changes); i++) {
+        if(userInGroup(argv[1], changes[i].user) && (currentDate() - changes[i].#{date} < "24h")) {
+            updatedByUsersInGroup = true;
+        }
+    }
+    if(!updatedByUsersInGroup) {
+        ret += k;
+    }
+}
+return ret;

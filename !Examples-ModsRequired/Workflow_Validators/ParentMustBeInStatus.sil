@@ -1,0 +1,14 @@
+/*
+Use this script as a workflow transition validator to allow transition only if
+its parent issue is in status Open or Reopened
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Open" / "Reopened" (status)
+*/
+
+string[] statuses = {"Open", "Reopened"};
+string errorMsg = "Parent issue should have status Open or Reopened!";
+if(!isNull(parent) && !elementExists(statuses, parent.status)) {
+   return false, errorMsg;
+}

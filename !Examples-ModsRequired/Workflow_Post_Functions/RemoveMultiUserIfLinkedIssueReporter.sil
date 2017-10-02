@@ -1,0 +1,14 @@
+/*
+Call this script from a workflow transition post-function.
+It will remove users from a multi-user field if the user was also the reporter
+of a linked issue.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Team" (customField)
+*/
+
+string[] linkedIssues = linkedIssues(key);
+for(string issue in linkedIssues) {
+    Team = deleteElement(Team, %issue%.reporter);
+}

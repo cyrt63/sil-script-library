@@ -1,0 +1,15 @@
+/*
+This Live Field script will auto populate the reporter as the assignee
+on the resolution transition screen.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "trans_5" (id of screen shown on "resolve issue" transition)
+*/
+
+if(argv["screen"] == "trans_5") {
+ //On the "Resolve Issue" screen, set the assignee to the reporter
+ // so the user can test it and confirm that the issue is fixed.
+ lfSet("assignee", reporter);
+ lfDisable(assignee);
+}

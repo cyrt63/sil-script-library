@@ -1,0 +1,23 @@
+/*
+Call this script from a workflow transition post-function.
+It will look up the current user's manager in LDAP and assign that person to
+the issue.
+
+Note that LDAP must be configured and the "manager" field must be populated
+in LDAP for this script to work.
+*/
+
+string mgr = ldapUserRecord("manager", "(sAMAccountName=" + currentUser() + ")"); //get the current user's manager DN
+
+string cnUser = substring(mgr, 0, indexOf(mgr,",")); //establish the cn, this is the manager user (that may depend on your setup)
+
+string mgrUserName = ldapUserRecord("sAMAccountName", cnUser); //again, a lookup in the Active Directory to get the manager
+
+//Note: these LDAP calls are automatically cached, so performance gets better if it is found in cache
+
+if(userExists(mgrUserName)) { //make sure this is defined in JIRA
+ assignee = mgrUserName;
+} else {
+ //fallback to project admin
+ assignee = projectPM(project);
+}

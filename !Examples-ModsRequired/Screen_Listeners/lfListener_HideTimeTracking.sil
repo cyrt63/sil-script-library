@@ -1,0 +1,15 @@
+/*
+This Live Field script will hide all time tracking data on an issue for
+users in the Customer role.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* projectKey
+* "Customer" (projectRole)
+*/
+
+if(isUserInRole(currentUser(), projectKey, "Customer")) {
+ lfHide("timetracking_panel");
+ lfHide("history_tab");
+ lfHide("worklog_tab");
+}

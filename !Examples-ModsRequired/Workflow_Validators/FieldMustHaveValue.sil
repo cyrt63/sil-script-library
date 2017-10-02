@@ -1,0 +1,13 @@
+/*
+Use this script as a workflow transition validator to allow transition only if
+a custom field has a value populated.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* customfield_10500 (customField)
+*/
+
+string errorMsg = "Field was not initialized!";
+if(!hasInput("customfield_10500")) {
+   return false, "customfield_10500", errorMsg;
+}

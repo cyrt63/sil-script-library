@@ -1,0 +1,18 @@
+/*
+Use this script as a workflow transition validator to allow transition only if
+all users listed in MultiUser custom field are also part of the same Project
+Role.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Developers" (projectRole)
+* customfield_10500 (customField)
+*/
+
+string PROJECT_ROLE = "Developers";
+for(string user in customfield_10500) {
+    if(!isUserInRole(user, project, PROJECT_ROLE)) {
+       string errorMsg = "User " + user + " is not in project role " + PROJECT_ROLE;
+       return false, "customfield_10500", errorMsg;
+    }
+}

@@ -1,0 +1,18 @@
+/*
+Call this script from an "issue created" event listener.
+It will set the assignee to a specific user if the reporter is in a specific
+project role.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "mike" (username)
+* "Developers" (projectRole)
+* "given_assignee" (username)
+*/
+
+string given_assignee = "mike";
+string project_role = "Developers";
+
+if(isUserInRole(reporter, project, project_role)) {
+    assignee = given_assignee;
+}

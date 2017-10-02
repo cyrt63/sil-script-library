@@ -1,0 +1,15 @@
+/*
+Call this script from an "issue created" event listener.
+It will set the assignee based on the issue's project.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "TST" (projectKey)
+* "tester" (username)
+*/
+
+if(project == "TST") {
+   assignee = "tester";
+} else {
+   assignee = reporter;
+}

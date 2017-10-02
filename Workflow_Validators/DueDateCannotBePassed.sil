@@ -1,0 +1,9 @@
+/*
+Use this script as a workflow transition validator to allow transition only if
+the due date is today or later.
+*/
+
+string errorMsg = "The due date of the issue was exceeded!";
+if(dueDate < currentDate()) {
+   return false, "duedate", errorMsg;
+}

@@ -1,0 +1,10 @@
+/*
+Call this script from an "issue created" event listener.
+This will fire a user-defined event if issue priority meets certain criteria
+*/
+
+string[] PRIORITIES = {"Highest", "High"};
+string EVENT = "Critical Issue Created";
+if(elementExists(PRIORITIES, priority)) {
+   raiseEvent(EVENT, key, currentUser());
+}

@@ -1,0 +1,32 @@
+/*
+This Live Field script will disable inline edit capabilities on the issue
+view screen for specified fields.
+*/
+
+
+// Standard fields
+string[] fields = {
+  "project",
+  "summary",
+  "issueType",
+  "priority",
+  "affectedVersions",
+  "fixVersions",
+  "components",
+  "labels",
+  "environment",
+  "description",
+  "assignee",
+  "reporter",
+  "dueDate"
+};
+
+//add here any other CF's you may want
+//fields += "customfield_10100";
+
+//Only for view
+if(argv["screen"] == "view") {
+    for(string f in fields) {
+        lfDisable(f);
+    }
+}

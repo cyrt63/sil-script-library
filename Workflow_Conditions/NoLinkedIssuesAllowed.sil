@@ -1,0 +1,6 @@
+/*
+Use this script as a workflow transition condition to allow transition only if
+the issue does not link to any other issues.
+*/
+
+return size(linkedIssues(key)) == 0;

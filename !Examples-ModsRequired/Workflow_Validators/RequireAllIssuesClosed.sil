@@ -1,0 +1,14 @@
+/*
+Use this script as a workflow transition validator to allow transition only if
+all issues in a specified project are closed.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Closed" (status)
+*/
+
+string errorMsg = "There are still unclosed issues in the current project.";
+string[] issues = selectIssues("project = " + project + " AND status != Closed AND key != " + key);
+if(size(issues) > 0) {
+   return false, errorMsg;
+}

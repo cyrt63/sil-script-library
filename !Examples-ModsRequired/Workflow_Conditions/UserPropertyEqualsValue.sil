@@ -1,0 +1,11 @@
+/*
+Use this script as a workflow transition condition to allow transition only if
+a specified a user property (e.g. country) equals a certain value
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Romania" (userProperty)
+*/
+
+string COUNTRY = "Romania";
+return getUserProperty(currentUser(), "country") == COUNTRY;

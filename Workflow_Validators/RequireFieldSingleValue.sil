@@ -1,0 +1,9 @@
+/*
+Use this script as a workflow transition validator to allow transition only if
+a multi-value field has a single value populated.
+*/
+
+string errorMsg = "You must choose a single fix version!";
+if(size(fixVersions) > 1) {
+   return false, "fixVersions", errorMsg;
+}

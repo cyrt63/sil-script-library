@@ -1,0 +1,8 @@
+/*
+Call this script from an "issue created" event listener.
+It will populate a verbose description based on other field values.
+*/
+
+description = "Current issue of type " + issueType + " was created on " + created + " by " + userFullName(reporter) + " in project " + project
+        + " with the following summary: '" + summary + "'.\n"
+        + "It affects versions " + (string)affectedVersions + " and is expected to be resolved on " + dueDate + ".";

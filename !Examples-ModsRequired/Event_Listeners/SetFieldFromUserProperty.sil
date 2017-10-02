@@ -1,0 +1,14 @@
+/*
+Call this script from an "issue created" event listener.
+It will set the user property of the current user and put the value into a
+custom field.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Romania" (country)
+* customfield_10100 (customField)
+*/
+
+string USER = currentUser();
+setUserProperty(USER, "country", "Romania");
+customfield_10100 = getUserProperty(USER, "country");

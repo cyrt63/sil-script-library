@@ -1,0 +1,16 @@
+/*
+Use this script as a workflow transition condition to allow transition only if
+NO users in a MultiUser custom field are a member of a specified Project Role
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Administrators" (projectRole)
+* "Team" (customField)
+*/
+
+string ROLE = "Administrators";
+for(string user in Team) {
+    if(isUserInRole(user, project, ROLE)) {
+       return false;
+    }
+}

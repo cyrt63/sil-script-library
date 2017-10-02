@@ -1,0 +1,17 @@
+/*
+Call this script from the scheduler.
+It will add all customers (multi-user field) as watchers to the issue if
+the customer has value BT in their full name.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* CUSTOMER_REGEX (tweak to taste)
+* Customers (customField)
+*/
+
+string CUSTOMER_REGEX = ".*\bBT\b.*";
+for(string user in Customers) {
+    if(matches(userFullName(user), CUSTOMER_REGEX)) {
+       watchers = addElement(watchers, user);
+    }
+}

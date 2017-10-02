@@ -1,0 +1,11 @@
+/*
+Use this script as a workflow transition condition to allow transition only if
+the estimated time remaining is less than 3.5 days.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "3d 4h" (estimate)
+*/
+
+interval tmRemaining = "3d 4h";
+return tmRemaining < (estimate - timeSpent);

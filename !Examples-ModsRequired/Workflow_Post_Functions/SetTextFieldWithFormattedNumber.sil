@@ -1,0 +1,10 @@
+/*
+Call this script from a workflow transition post-function.
+It will translate a numeric value to a text format.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* customfield_10000 (customField)
+*/
+
+customfield_10000 = formatNumber(123456789 ,"###,###.###");

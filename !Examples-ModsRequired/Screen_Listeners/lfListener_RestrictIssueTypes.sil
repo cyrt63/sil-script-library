@@ -1,0 +1,17 @@
+/*
+This Live Field script will hide options to create issues with a certain issue
+type if the user is not the project lead.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* project
+* "New Feature" / "Improvement" (issueType)
+*/
+
+string project = "TP"; //the project key
+string pm = projectPM(project);
+string[] forbiddenTypes = {"New Feature", "Improvement"}; //the array of the issue types to restrict
+
+if(pm != currentUser()) {
+ lfRestrictSelectOptions("issueType", forbiddenTypes);
+}

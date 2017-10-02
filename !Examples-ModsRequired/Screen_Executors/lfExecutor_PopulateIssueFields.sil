@@ -1,0 +1,22 @@
+/*
+This Live Field script will auto-populate the description, components, and
+affectedVersions field on an issue's create screen if it is in the DEMO project
+with issue type Bug. Use with lfListener_ProjectAndIssueType.sil
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* projectKey
+* issueType
+* components
+* affectedVersions
+*/
+
+if(argv["screen"] == "create" && contains(argv["project"], "DEMO") && argv["issueType"] == "Bug") {
+   //on Create Issue screen
+    lfSet("description", "Please describe what's happening: \n\n" +
+                         "What you think should be happening: \n" +
+                         "Where it's found: \n" +
+                         "Steps to reproduce: \n#action 1\n#action 2\n#action3");
+    lfSet("components", {"ui", "business"});
+    lfSet("affectedVersions", {"1.0.1", "1.0.2"});
+}

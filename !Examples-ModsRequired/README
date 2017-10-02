@@ -1,0 +1,5 @@
+Scripts in the "!Examples-ModsRequired" folder and sub-folders include example
+scripts that *will not* work in any arbitrary Jira deployment.
+
+The user is expected to have to tweak one or more variables to enable the
+intended outcome.

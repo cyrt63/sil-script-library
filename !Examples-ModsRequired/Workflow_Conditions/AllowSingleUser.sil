@@ -1,0 +1,10 @@
+/*
+Use this script as a workflow transition condition to allow transition only if
+the user invoking the transition is a specified user
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "admin" (username)
+*/
+
+return currentUser() == "admin";

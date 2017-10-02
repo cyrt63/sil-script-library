@@ -1,0 +1,21 @@
+/*
+This script is used in silJQL to return a list of all issues where the last
+comment was authored by a user in a specified group in a specified project.
+Use with silJQLList.
+Example: key in silJQLList("silJQL_LastCommentedProjectByGroup.sil", PROJ, jira-administrators)
+*/
+
+string [] keys = selectIssues("project = " + argv[0]);
+string [] ret;
+for(string k in keys) {
+    number [] commentIds = getAllCommentIds(k);
+    if(size(commentIds) != 0) {
+        for(number id in commentIds) {
+            JComment comment = getCommentById(id);
+            if(userInGroup(argv[1], comment.updatedBy)) {
+                ret += k;
+            }
+        }
+    }
+}
+return ret;

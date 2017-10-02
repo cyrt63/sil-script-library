@@ -1,0 +1,20 @@
+/*
+Use this script as a workflow transition condition to allow transition only if
+the value of a custom field matches regex such that:
+1) value begins with string "accepted."
+2) followed by exactly 10 numbers
+3) followed by "."
+4) followed by alpha text only
+5) the following character is "-"
+6) and finally it has some numbers.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* Many fields. This is an example of using complex regex against a custom field
+*/
+
+return matches(customfield_10000, "accepted(.)(\\\\d+\\\\.?){10}(.)[a-z]+(-)(\\\\d+\\\\.?)");
+
+// accepted.1234567890.text-123 [PASS]
+// accepted.0987654321.othertext-123456 [PASS]
+// notaccepted-456 [FAIL]

@@ -1,0 +1,20 @@
+/*
+Call this script from an "issue created" event listener.
+It will set the assignee based on various issue type and component combinations.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Bug" (issueType)
+* "component1" (component)
+* "userX" (username)
+*/
+
+if(issueType == "Bug") {
+   if(elementExists(components, "component1")) {
+      assignee = "user1";
+   } else {
+      assignee = "user2";
+   }
+} else {
+   assignee = "user3";
+}

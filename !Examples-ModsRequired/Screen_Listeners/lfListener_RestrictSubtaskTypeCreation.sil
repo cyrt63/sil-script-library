@@ -1,0 +1,14 @@
+/*
+This Live Field script will hide sub-task options for given issue types.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "New Feature" / "Improvement" (parent issueType)
+* "Sub-task" (sub-task issueType)
+*/
+
+string[] issueTypes = {"New Feature", "Improvement"}; //the array of the Issue Types
+string[] subTasks = {"Sub-task"}; //the array of the Sub-Tasks to restrict
+if(elementExists(issueTypes, issueType)) {
+    lfRestrictSelectOptions("issueType", subTasks);
+}

@@ -1,0 +1,14 @@
+/*
+This script is used in silJQL to return a list of issue types that meet a
+certain criteria as defined in this script's internal logic.
+Use with silJQLList.
+Example: project = PROJ and issueType in silJQLList("silJql_ComplexIssueTypeLogic.sil") and status in (Backlog, Open, "To Do")
+*/
+
+string [] additionalTypes;
+
+//.....very complex logic
+additionalTypes += "Sub-Task";
+//... more complex logic
+
+return "Bug", "Task", additionalTypes;

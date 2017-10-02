@@ -1,0 +1,7 @@
+/*
+Call this script from an "issue resolved" event listener.
+It will clear the components field.
+*/
+
+string[] emptyComponents = {""};
+components=emptyComponents;

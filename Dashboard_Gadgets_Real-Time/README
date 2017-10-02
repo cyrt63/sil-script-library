@@ -1,0 +1,10 @@
+Scripts in this folder are intended to be invoked from the following applicable
+triggers:
+* Dashboard Gadgets (Real Time Execution)
+
+However, they may also be invoked by the following triggers:
+* Event Listeners
+* Schedulers
+* Live Fields - Screen Executors
+* Startup / Shutdown
+* Workflow Post Functions

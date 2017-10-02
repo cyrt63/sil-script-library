@@ -1,0 +1,14 @@
+/*
+Use this script as a workflow transition condition to
+restrict transition if the most recent status wasn't a specific status.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* STATUS_OPEN (id of most recent status you want to check against)
+*/
+
+number STATUS_OPEN = 1;
+string[] status_history = fieldHistory(key, "status");
+string previous_status = getElement(status_history, size(status_history)-3);
+
+return previous_status == STATUS_OPEN;

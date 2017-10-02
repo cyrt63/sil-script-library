@@ -1,0 +1,10 @@
+/*
+Use this script as a workflow transition condition to allow transition only if
+the user invoking the transition is NOT a user listed in a MultiUser custom field
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Team" (customField)
+*/
+
+return !elementExists(Team, currentUser());

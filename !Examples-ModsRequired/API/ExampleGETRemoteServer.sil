@@ -1,0 +1,10 @@
+/*
+Call this script from a workflow transition post-function.
+It will make a GET request to a remote server you define
+
+The user is expected to modify virtually everything here to retrieve
+data from a remote API
+*/
+
+string [] headers = "Accept-Charset|utf-8|X-Powered-By|Power Scripts for JIRA";
+httpGet("http://www.myserver.com/geturl?project=" + project, headers); //note: you have to manually encode the values.

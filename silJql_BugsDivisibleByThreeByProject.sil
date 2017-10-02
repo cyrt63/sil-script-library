@@ -1,0 +1,12 @@
+/*
+This script is used in silJQL to return all issues of issue type Bug
+where the issue key is divisible by 3 in a specified project as
+specified in JQL search. Use with silJQLList.
+Example: key in silJQLList("silJql_BugsDivisibleByThreeByProject.sil", PROJ)
+*/
+string [] keys = selectIssues("project = " + argv[0] + " and issueType = 'Bug'");
+string [] ret;
+for(string k in keys) {
+    if(%k%.id % 3 == 0) { ret += k; } //if the id is divisible with 3, it's selected
+}
+return ret;

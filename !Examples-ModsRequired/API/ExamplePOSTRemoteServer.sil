@@ -1,0 +1,17 @@
+/*
+Call this script from a workflow transition post-function.
+It will make a POST request to a remote server with parameters you define
+
+The user is expected to modify virtually everything here to send
+data to a remote API
+*/
+
+string [] headers = "Accept|text/plain|X-Powered-By|Power Scripts for JIRA";
+string [] params = {};
+params += "Summary";
+params += summary;
+params += "Project";
+params += project;
+params += "Created";
+params += created;
+httpPost("http://www.myserver.com/posturl", headers, params);

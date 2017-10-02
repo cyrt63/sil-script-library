@@ -1,0 +1,8 @@
+/*
+Call this script from a workflow transition post-function.
+It will add a comment as user with text you define.
+*/
+
+string USER = currentUser();
+string COMMENT = "Closed on " + updated + " by " + userFullName(USER) + " with fixed versions " + (string)fixVersions + ".";
+addComment(key, USER, COMMENT);

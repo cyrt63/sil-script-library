@@ -1,0 +1,16 @@
+/*
+Call this script from an "issue created" event listener.
+It will set the issue security based on the user creating the issue.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Developers" (projectRole)
+* securityLevel (securityLevel)
+*/
+
+string PROJECT_ROLE = "Developers";
+if(isUserInRole(currentUser(), project, PROJECT_ROLE)) {
+   securityLevel = "Internal";
+} else {
+   securityLevel = "Anybody";
+}

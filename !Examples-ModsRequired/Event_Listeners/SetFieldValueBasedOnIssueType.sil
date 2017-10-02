@@ -1,0 +1,15 @@
+/*
+Call this script from an "issue created" event listener.
+It will set the Billable custom field based on the issue type of the issue.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Bug" (issueType)
+* "Billable" (customField)
+*/
+
+if(issueType == "Bug") {
+   Billable = "No";
+} else {
+  Billable = "Yes";
+}

@@ -1,0 +1,18 @@
+/*
+This script is used in silJQL to return a list of all sub-task issues in
+a given project. Use with silJQLList.
+Example: key in silJQLList("silJql_SubtasksByProject".sil", PROJ)
+*/
+
+string [] keys = selectIssues("project= " + argv[0]);
+string [] ret;
+for(string k in keys) {
+    string [] subtasksKeys = subtasks(k);
+    if(size(subtasksKeys) != 0) {
+        for(string sk in subtasksKeys) {
+              ret += sk;
+        }
+    }
+}
+
+return ret;

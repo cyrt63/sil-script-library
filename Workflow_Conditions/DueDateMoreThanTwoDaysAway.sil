@@ -1,0 +1,6 @@
+/*
+Use this script as a workflow transition condition to allow transition only if
+the issue's due date is more than two days in the future
+*/
+
+return dueDate > (currentDate() + "2d");

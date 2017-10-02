@@ -1,0 +1,10 @@
+/*
+Use this script as a workflow transition condition to allow transition only if
+a specified custom field has been populated with a value.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "customfield_10000" (customField)
+*/
+
+return isNotNull(customfield_10000);

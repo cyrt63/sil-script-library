@@ -1,0 +1,8 @@
+/*
+Call this script on a set schedule.
+It will remove the project lead as assignee.
+*/
+
+if(assignee == projectPM(project)) {
+   assignee = "";
+}

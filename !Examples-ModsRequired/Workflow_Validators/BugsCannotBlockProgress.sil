@@ -1,0 +1,21 @@
+/*
+Use this script as a workflow transition validator to allow transition only if
+the issue does not have any linked issues which are Bugs and of type Blocks
+or Cloners.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Blocks" / "Cloners" (linkType)
+* "Bug" (issueType)
+*/
+
+string errorMsg = "Issue links of types 'Blocks' and 'Cloners' with 'Bugs' are forbidden.";
+string[] links = {"Blocks", "Cloners"};
+for(string link in links) {
+    string[] linkedIssues = linkedIssues(key, link);
+    for(string issue in linkedIssues) {
+        if(%issue%.issueType == "Bug") {
+           return false, errorMsg;
+        }
+    }
+}

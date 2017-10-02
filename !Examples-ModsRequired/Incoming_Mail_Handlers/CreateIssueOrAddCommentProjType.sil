@@ -1,0 +1,37 @@
+/*
+This script is invoked by the SIL mail handler to process an incoming email
+in the same manner as JIRA's default "Create issue or add comment" mail
+handling option.
+
+To use this script, you will have to modify the destination projectKey and
+issueType for your purposes.
+*/
+
+IncomingEmail mail = getIncomingEmail();
+
+string issueKey = matchText(mail.subject, "[A-Z][A-Z]+-[0-9]+"); // find an issue key in the subject
+if(isNull(issueKey)) {
+    // if no issue key found, create a new issue
+    string [] fields = {};
+    fields += {"reporter", getUserByEmail(mail.from[0]).key};
+    fields += {"assignee", getUserByEmail(mail.to[0]).key};
+
+    string newIssue = createIssue(
+      "PROJ", //projectKey
+      "", //parentIssueKey
+      "Task", //issueType
+      mail.subject, //summary
+      "Medium", //priority
+      mail.body, //description
+      {}, //components
+      "", //dueDate
+      "", //estimate
+      "", //security_level
+      fields //custom_fields_mappings
+    );
+    attachAllFilesFromEmail(newIssue);
+    %newIssue%.watchers = getUserKeysFromEmails(mail.cc);
+} else {
+    // if issue key found in subject, add a comment
+    addComment(issueKey, currentUserKey(), mail.body);
+}

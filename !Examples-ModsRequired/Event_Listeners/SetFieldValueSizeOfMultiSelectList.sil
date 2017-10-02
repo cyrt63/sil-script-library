@@ -1,0 +1,12 @@
+/*
+Call this script from an "issue updated" event listener.
+It will populate a custom field with the numeric size of a given
+multi-select list field.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* Number (customField)
+* MultiSelectList (customField)
+*/
+
+Number = size(MultiSelectList);

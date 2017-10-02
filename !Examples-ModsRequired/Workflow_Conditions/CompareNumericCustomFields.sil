@@ -1,0 +1,11 @@
+/*
+Use this script as a workflow transition condition to allow transition only if
+one numeric custom field is a lesser value than another.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "customfield_11300" (customField)
+* "customfield_11301" (customField)
+*/
+
+return customfield_11300 < customfield_11301;

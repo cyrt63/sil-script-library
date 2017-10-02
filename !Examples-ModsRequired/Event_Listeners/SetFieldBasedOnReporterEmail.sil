@@ -1,0 +1,16 @@
+/*
+Call this script from an "issue created" event listener.
+It will set a single-select custom field value based on the reporter's
+email domain.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* EMAIL_REGEX (tweak to taste)
+* Defect (customField)
+* "Development" (valid value for customField)
+*/
+
+string EMAIL_REGEX = ".*@gmail\\.com$";
+if(matches(userEmailAddress(reporter), EMAIL_REGEX)) {
+   Defect = "Development";
+}

@@ -1,0 +1,10 @@
+/*
+This Live Field script will hide priority options for a given project.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Blocker" / "Trivial" (priority)
+*/
+
+string[] forbiddenPriorities = {"Blocker", "Trivial"}; //the array of the priorities to restrict
+lfRestrictSelectOptions("priority", forbiddenPriorities);

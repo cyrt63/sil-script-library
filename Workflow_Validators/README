@@ -1,0 +1,5 @@
+Scripts in this folder are intended to be invoked from the following applicable
+triggers:
+* Workflow Validators
+
+It is unlikely that these scripts can be used for any other trigger source.

@@ -1,0 +1,7 @@
+/*
+This Live Field script calls a custom javascript function
+lfExecutor_ShowCreateOnlyIfAttachment.js, which hides the "Create" button
+until a file is attached.
+*/
+
+lfExecuteJS("lfExecutor_ShowCreateOnlyIfAttachment.js");

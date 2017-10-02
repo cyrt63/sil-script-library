@@ -1,0 +1,12 @@
+Scripts in this folder are intended to be invoked from the following applicable
+triggers:
+* Live Fields - Screen Executors
+
+However, they may also be invoked by the following triggers:
+* Dashboard Gadgets
+* Event Listeners
+* Schedulers
+* Startup / Shutdown
+* Workflow Post Functions
+
+Please note that these scripts must reside in the root _silprograms_ directory!

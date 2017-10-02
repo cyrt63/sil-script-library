@@ -1,0 +1,21 @@
+/*
+Call this script from a shutdown script.
+It will send an email to the sysadmin whenever Jira is shutdown
+or Power Scripts is disabled.
+bodyTemplate.tpl is an email template. See the docs.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* Virtually everything
+*/
+
+sendEmail(
+  noreply@yourcompany.com, //From
+  sysadmin@yourcompany.com, //To
+  {}, //CC
+  "Jira stopped", //Subject
+  "bodyTemplate.tpl", //Body or Template
+  "en_US", //Language
+  "", //key
+  "instructions.txt" // regex_array if key is present, absolute file path if key is absent
+);

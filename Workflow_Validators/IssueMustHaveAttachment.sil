@@ -1,0 +1,9 @@
+/*
+Use this script as a workflow transition validator to allow transition only if
+the issue has one or more attachments.
+*/
+
+string errorMsg = "At least one file must be attached to the issue.";
+if(size(attachments) == 0) {
+   return false, errorMsg;
+}

@@ -1,0 +1,22 @@
+/*
+Call this script from a workflow transition post-function.
+It will copy the reporter and watchers of an issue to all issue links of
+type duplicate.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Duplicate" (linkType)
+*/
+
+string u;
+number n=0;
+n=size(fieldHistory(key, "Link"));
+if (n>0 and resolution=="Duplicate")
+{
+ string dKey=getElement(fieldHistory(key, "Link"),n - 1); // history
+ %dKey%.watchers=addElementIfNotExist(%dKey%.watchers, reporter);
+ for (u in watchers)
+ {
+ %dKey%.watchers=addElementIfNotExist(%dKey%.watchers, u);
+ }
+}

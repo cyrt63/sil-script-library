@@ -1,0 +1,11 @@
+/*
+Call this script from an "issue updated" event listener.
+It will change the format of the due date and save to a custom field.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* customfield_10000 (customField)
+*/
+
+string FORMAT = "EEE, d MMM yyyy HH:mm:ss Z";
+customfield_10000 = formatDate(dueDate, FORMAT);

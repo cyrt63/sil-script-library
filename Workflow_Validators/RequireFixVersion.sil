@@ -1,0 +1,8 @@
+/*
+Use this script as a workflow transition validator to allow transition only if
+the fixVersion field is set.
+*/
+
+if(isNull(fixVersions)){
+ return false, "fixVersions", "Fix Versions is required when resolving an issue.";
+}

@@ -1,0 +1,20 @@
+/*
+This Live Field script requires the user to populate a custom field "address"
+if the "delivery" custom field is set to "Yes".
+
+This execution script is used in conjunction with listner script
+"lfListener_ChangesToCustomFields.sil"
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* customfield_10100 (delivery)
+* customfield_11100 (address)
+*/
+
+if(argv["customfield_10100"] == "Yes" && argv["customfield_11100"] == "") {
+   lfShowFieldMessage("customfield_11100", "Field Address is required.", "WARNING");
+   lfDisable("editSubmit");
+} else {
+   lfHideFieldMessage("customfield_11100");
+   lfEnable("editSubmit");
+}

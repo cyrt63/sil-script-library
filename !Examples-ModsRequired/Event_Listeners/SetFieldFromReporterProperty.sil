@@ -1,0 +1,10 @@
+/*
+Call this script from an "issue created" event listener.
+It will set a specified custom field to the reporter's country.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* customfield_10100 (customField)
+*/
+
+customfield_10100 = getUserProperty(reporter, "country");

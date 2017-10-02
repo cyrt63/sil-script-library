@@ -1,0 +1,14 @@
+/*
+This Live Field script will hide resolution options based on the issue type.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "New Feature" / "Improvement" (issueType)
+* "Fixed" / "Won't Fix" / "Cannot Reproduce" (resolution)
+*/
+
+string[] issueTypes = {"New Feature", "Improvement"};
+string[] bugResolutions = {"Fixed", "Won't Fix", "Cannot Reproduce"};
+if(elementExists(issueTypes, issueType)) {
+   lfRestrictSelectOptions("resolution", bugResolutions);
+}

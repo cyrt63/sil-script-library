@@ -1,0 +1,9 @@
+/*
+This script is used in silJQL to return a single random issue of issue type Bug
+in a specified project as specified in JQL search. Use with silJQL.
+Example: key = silJQL("silJql_RandomBugByProject.sil", PROJ)
+*/
+
+string [] keys = selectIssues("project = " + argv[0] + " and issueType = 'Bug'"); //we receive a parameter representing the project
+number ndx = random(size(keys)); //get a random number as index
+return keys[ndx]; //return the key, randomly picked. a little evil, but ... funny!

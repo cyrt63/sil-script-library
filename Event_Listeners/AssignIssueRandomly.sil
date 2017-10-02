@@ -1,0 +1,13 @@
+/*
+Call this script from an "issue created" listener.
+It will randomly assign the issue to a project member.
+*/
+
+string[] prjMembers = projectMembers(project);
+number n = arraySize(prjMembers);
+
+if (n > 0) {
+ assignee = arrayGetElement(prjMembers, random(n));
+} else {
+ assignee = projectPM(project);
+}

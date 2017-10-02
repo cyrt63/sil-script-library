@@ -1,0 +1,10 @@
+/*
+This Live Field script listens to changes on issue field Summary. If the user
+is on the create or edit issue screen and the conditions defined in Executor
+script lfExecutor_SummaryImportantPriorityHighest.sil are met, then the script
+will execute
+*/
+
+if(argv["screen"] == "create" || argv["screen"] == "edit") {
+  lfWatch("summary", {"summary"}, "lfExecutor_SummaryImportantPriorityHighest.sil" , {"keyup"});
+}

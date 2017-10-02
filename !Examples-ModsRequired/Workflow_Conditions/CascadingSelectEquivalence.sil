@@ -1,0 +1,17 @@
+/*
+Use this script as a workflow transition condition to allow transition only if
+the two values of a cascading select custom field are null or equal to each other.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "customfield_10000" (customField)
+* "customfield_10001" (customField)
+*/
+
+if(length(customfield_10000) == 0 && length(customfield_10001) == 0) { //both cascading select are empty
+   return true;
+}
+if(customfield_10000 == customfield_10001) {
+   return true;
+}
+return false;

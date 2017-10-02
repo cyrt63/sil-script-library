@@ -1,0 +1,9 @@
+/*
+Call this script from a workflow transition post-function.
+It will append an issue's components to all its sub-tasks component fields.
+*/
+
+string[] subtasks = subtasks(key);
+for(string subtask in subtasks) {
+    components = arraysConcat(components, %subtask%.components);
+}

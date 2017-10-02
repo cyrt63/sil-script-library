@@ -1,0 +1,18 @@
+/*
+Call this script from an "issue created" event listener.
+It will set the security level if the reporter or assignee are in a given
+project role.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Documentation" (securityLevel)
+* "Analysts" (projectRole)
+*/
+
+string security_level = "Documentation";
+string project_role = "Analysts";
+
+if(isUserInRole(reporter, project, project_role) ||
+   isUserInRole(assignee, project, project_role)) {
+    security = security_level;
+}

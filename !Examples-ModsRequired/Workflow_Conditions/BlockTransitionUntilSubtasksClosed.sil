@@ -1,0 +1,19 @@
+/*
+Use this script as a workflow transition condition to allow transition only if
+all subtasks are closed.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Closed" (status)
+*/
+
+for (string sk in subtasks(key)) {
+
+    //if found subtask that has not been closed, return false
+    if (%sk%.status != "Closed") {
+        return false;
+    }
+}
+
+//otherwise return true
+return true;
