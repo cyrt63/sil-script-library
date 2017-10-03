@@ -67,7 +67,19 @@ arbitrary directory hierarchy.
 
 ### How to navigate the script folder structure layout
 
-TBD. Will include this after scripts are aggregated.
+Folders in the root directory of this repository are laid out by anticipated
+triggering mechanism. For example, we believe some scripts are better handled
+as "scheduler" scripts as opposed to "workflow post-function" scripts, but
+the boundary between them is not necessarily concrete. Scripts in the root
+directory (and subfolders of the root directory) **should** be operational
+for any arbitrary Jira deployment. There are a few exceptions:
+
+1. See **Important Note** above
+2. The **!Examples-ModsRequired** folder is laid out to mirror the root
+hierarchy. The differences is that scripts in these subfolders **may not** work
+in any arbitrary Jira deployment. The user is expected to reference these
+examples and either tweak variables as applicable or to use them as a learning
+tool for his or her unique needs.
 
 ## Further documentation
 
