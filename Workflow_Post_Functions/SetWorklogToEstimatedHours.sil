@@ -1,0 +1,14 @@
+/* This script is called from a workflow transition post-function when an issue
+closes with a successful resolution. It takes the estimated hours field, and uses
+that value to generate a worklog for the exact same amount of time by the
+users who invokes the transition.
+
+This is used in conjunction with lfExecutor_CreateEstimateFromStoryPoints.sil
+and lfListener_CreateEstimateFromStoryPoints.sil
+*/
+
+addWorklogAdjustEstimate(key, currentUser(), estimate, currentDate(), "automated worklog on successful resolution");
+
+/* Of course, you'd want to add some logic or scripts that removes the worklog
+if the issue is later reopened.. these things need to be thought through.
+*/

@@ -1,0 +1,13 @@
+/* This script checks for changes to the story points field and updates the 
+Estimate and Original Estimate fields based on a Story Point to Hours Mapping
+
+Use this script in conjunction with 
+lfExecutor_CreateEstimatesFromStoryPoints.sil and SetWorklogToEstimatedHours.sil
+
+Note that you have to map the field storyPoints to a customfield ID in
+sil.aliases file.
+*/
+
+if(argv["screen"] == "create" || argv["screen"] == "edit") {
+    lfWatch("storyPoints", {"storyPoints"}, "lfExecutor_CreateEstimateFromStoryPoints.sil" , {"keyup"});
+    }
