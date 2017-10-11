@@ -39,7 +39,8 @@ installed in default directories with default user:group as defined in
 >> git clone https://bitbucket.cprime.io/scm/cap/sil-script-library.git
 >> sudo cp -a sil-script-library/. /var/atlassian/application-data/jira/silprograms/
 >> sudo chown -R jira:jira /var/atlassian/application-data/jira/silprograms
->> sudo chmod 640 /var/atlassian/application-data/jira/silprograms/*
+>> sudo find /var/atlassian/application-data/jira/silprograms -type d -exec chmod 755 {} \;
+>> sudo find /var/atlassian/application-data/jira/silprograms -type f -exec chmod 644 {} \;
 ```
 
 Please note that this operation **will overwrite** any directories or files
