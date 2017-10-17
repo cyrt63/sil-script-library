@@ -1,2 +1,6 @@
+/*
+Call this script from a workflow transition post-function.
+It will add the assignee to the Service Desk participants.
+*/
 
 customfield_10301 = assignee;

@@ -1,0 +1,14 @@
+/*
+Use this script as a workflow transition validator to allow transition only if
+the assignee is located in a specific user group.
+
+*/
+
+string errorMsg = "You can only assign issues to members of your same team";
+
+if(userInGroup("Customer Relations Team", currentUser()) && userInGroup("Customer Relations Team", assignee)) {
+return true;
+}
+else {
+return false, "error", errorMsg;
+}
