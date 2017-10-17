@@ -1,0 +1,46 @@
+/* This script will run whenever an issue is created, updated, or work is 
+logged on an issues in the applicable project.
+
+It adds a comment to a specific issue to explain, in human readable terms,
+how many total hours are esimated and logged in the project, and gives a
+percentage complete value. One could mod the script to populate fields instead
+of adding a comment.
+*/
+
+string projectInScope="PRDT"; // the project you want to sum up
+string masterIssue="PRDT-45"; // issue where you want to capture this info
+
+if(project==projectInScope) { // if invoked via listener, limit the scope
+ string jql="project="+projectInScope; 
+ string [] allProjectIssues=selectIssues(jql);
+ string issue;
+ string commentText;
+ 
+ interval sumOriginalEstimate;
+ interval sumTimeSpent;
+ interval sumTimeRemaining;
+ 
+ number hoursOriginalEstimate;
+ number hoursTimeSpent;
+ number completePercent;
+ 
+ number countIssues=0;
+ 
+ for(issue in allProjectIssues) {
+   sumOriginalEstimate += %issue%.originalEstimate;
+   sumTimeSpent += %issue%.timeSpent;
+   countIssues +=1;
+ }
+
+ sumTimeRemaining = sumOriginalEstimate - sumTimeSpent;
+ hoursTimeSpent = sumTimeSpent;
+ hoursOriginalEstimate = sumOriginalEstimate;
+ completePercent = round((hoursTimeSpent/hoursOriginalEstimate)*100,0);
+ 
+ string commentTextA = "This project has *"+sumOriginalEstimate+"* estimated work";
+ string commentTextB = " with *"+sumTimeSpent+"* spent for a total of *";
+ string commentTextC = ""+sumTimeRemaining+"* hours remaining. ";
+ string commentTextD = "It is *"+completePercent+"%* complete.";
+ commentText = commentTextA + commentTextB + commentTextC + commentTextD;
+ addComment(masterIssue, currentUser(), commentText);
+}
