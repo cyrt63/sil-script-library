@@ -1,0 +1,5 @@
+date t = currentDate();
+int d = 2;
+interval i = d + "d";
+
+return t + i;
