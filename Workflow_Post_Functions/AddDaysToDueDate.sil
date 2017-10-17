@@ -1,0 +1,6 @@
+//add days from customfield to due date
+
+interval i = (string)customfield_10703 + "d";
+
+dueDate = currentDate() + i;
+

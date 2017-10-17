@@ -1,5 +1,5 @@
 date t = currentDate();
 int d = 2;
-interval i = d + "d";
+interval i = (string)d + "d";
 
 return t + i;
