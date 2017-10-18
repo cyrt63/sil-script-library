@@ -1,0 +1,6 @@
+
+
+//customfield_10703
+if(currentUser() == "jmuse") {
+    lfRestrictSelectOptions("customfield_10703", {"1", "2", "3", "4", "5"});
+}
