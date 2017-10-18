@@ -3,7 +3,8 @@ Call this script from a workflow transition post-function.
 It will set the due date based on the value of customfield 10703.
 */
 
-interval i = (string)customfield_10703 + "d";
-
-dueDate = currentDate() + i;
+if(isNotNull(customfield_10703)) {
+    interval i = (string)customfield_10703 + "d";
+    dueDate = currentDate() + i;
+};
 

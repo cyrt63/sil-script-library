@@ -1,0 +1,8 @@
+//
+
+if(isNotNull(parent)) {
+    
+    summary = %parent%.summary;
+    description = %parent%.description;
+    dueDate = %parent%.dueDate;
+}

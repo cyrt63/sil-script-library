@@ -1,5 +1,8 @@
-date t = currentDate();
-int d = 2;
-interval i = (string)d + "d";
 
-return t + i;
+string c = "2017-10-18 01:19:14";
+
+date d = c;
+
+interval b = "1d";
+
+return (date)c + b;
