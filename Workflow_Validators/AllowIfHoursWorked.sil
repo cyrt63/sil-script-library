@@ -1,0 +1,14 @@
+//
+interval min = "0m";
+interval max = "60m";
+interval w = getTimeSpent(key, "jira-users");
+
+string errorMsg = "You must have minutes worked on the issues but must be less than 60";
+
+if(w > min && w <= max) {
+    //Issue has correct number of hours
+    return true;
+}
+else {
+    return false, "error", errorMsg;
+}
