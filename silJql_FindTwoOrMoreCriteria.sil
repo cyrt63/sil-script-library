@@ -1,0 +1,31 @@
+//
+
+string [] keys = selectIssues("project= " + argv[0]);
+string [] ret;
+
+for(string k in keys){
+    int criteriaCount = 0;
+    
+    if(arrayElementExists(%k%.labels, "criteria")) {
+        criteriaCount ++;
+    }
+    if(%k%.assignee == %k%.reporter) {
+        criteriaCount ++;
+    }
+    if(isNull(%k%.desc)) {
+        criteriaCount ++;
+    }
+    if(arrayElementExists(%k%.components, "JIRA")) {
+        criteriaCount ++;
+    }
+    if(%k%.priority == "Major") {
+        criteriaCount ++;
+    }
+    
+    if(criteriaCount >=2) {
+        ret += k;
+    }
+    
+}
+
+return ret;
