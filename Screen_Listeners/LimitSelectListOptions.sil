@@ -1,6 +1,7 @@
-
-
-//customfield_10703
+/*
+Script is called when screen is loaded
+It will limit the available options in a selected list based on the user
+*/
 if(currentUser() == "jmuse") {
     lfRestrictSelectOptions("customfield_10703", {"1", "2", "3", "4", "5"});
 }

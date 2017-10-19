@@ -1,4 +1,8 @@
-//
+/*
+Use this script as a workflow transition validator to allow transition only if
+there is worked logged but must be less than 60 minutes
+*/
+
 interval max = "60m";
 interval w = getTimeSpent(key, "jira-users");
 

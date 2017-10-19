@@ -1,4 +1,10 @@
-//
+/*
+This script is used in silJQL to return a list of all issues that meet
+two or more criteria. This can not be done using the normal boolean operators
+in standard JQL.
+Use with silJQLList.
+Example: key in silJQLList("silJQL_FindTwoOrMoreCriteria.sil", PROJ)
+*/
 
 string [] keys = selectIssues("project= " + argv[0]);
 string [] ret;
