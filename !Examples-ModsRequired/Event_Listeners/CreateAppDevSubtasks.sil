@@ -1,0 +1,48 @@
+/* 
+This script runs on an "Issue Created" event listener. If the issue created
+is of type Story, New Feature, or Improvement, it will auto-create sub-tasks
+relevant to modern application development disciplines. These include:
+* Visual Design
+* UI/UX
+* Front-End Development
+* API
+* Back-End Development
+* Database
+
+It also sets the Component field to a value equivalent to the issue type. The
+reason for this is that you may have one database developer on your team, and
+you would want all database sub-tasks to auto-assign to that individual. This 
+requires that you set up Components in your project to map 1:1 with your 
+sub-task issue types and have the issue auto-assign to the component lead.
+This is handled in project configuration, not within this script.
+
+This is only relevant for a single project; in this case, SMSW.
+
+You may want to run this script asynchronously because it creates several
+new issues and it does not necessarily matter that this script finishes before
+the create issue event is completely successful.
+*/
+
+string [] subTaskIssueTypes="Visual Design|UI/UX|Front-End Development|API|Back-End Development|Database";
+
+if(project=="SMSW") {
+    if(issueType=="Story" || issueType=="New Feature" || issueType=="Improvement") {
+        for(string issue in subTaskIssueTypes) {
+            string[] custom_fields_mapping;
+            custom_fields_mapping = "";
+            string newIssueKey = createIssue(
+                        project, // Project Key
+                        key, // Parent Issue Key (Blank if Standard Issue Type)
+                        issue, // Issue Type
+                        summary, // Summary
+                        priority, // Priority
+                        description, // Description
+                        issue, // Components
+                        "", // Due Date
+                        "", // Estimate
+                        "", // Security Level
+                        custom_fields_mapping // Custom Field Map
+                       );
+        }
+    }
+}

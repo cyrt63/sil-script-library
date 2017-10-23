@@ -1,0 +1,13 @@
+/* This script will be called from a post-function on a reopen transition
+of a parent issue. When the issue is reopened, it will automatically reopen
+all sub-tasks and clear the resolution.
+
+This script assumes that you have a transition called "Reopen" in your workflow
+that can be achieved from the state of the workflow that your subtasks are in.
+*/
+
+string[] issues = subtasks(key);
+for(string issue in issues) {
+    autotransition("Reopen", issue);
+    %issue%.resolution="";
+}

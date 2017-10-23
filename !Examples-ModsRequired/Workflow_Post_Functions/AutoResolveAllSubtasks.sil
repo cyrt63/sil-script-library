@@ -1,0 +1,16 @@
+/* This script will be called from a post-function on a resolution transition
+of a parent issue. When the issue is resolved, it will automatically close
+all sub-tasks and set the resolution to "Automated" to signify that the 
+sub-tasks were closed through an automated process, and were not actually
+completed by a human transition.
+
+This script assumes that you have a "transition from any" transition called
+"Kill" in your workflow, and that you have a resolution called "Automated"
+configured in your system.
+*/
+
+string[] issues = subtasks(key);
+for(string issue in issues) {
+    autotransition("Kill", issue);
+    %issue%.resolution="Automated";
+}
