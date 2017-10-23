@@ -6,8 +6,14 @@ lfExecutor_CreateEstimatesFromStoryPoints.sil and SetWorklogToEstimatedHours.sil
 
 Note that you have to map the field storyPoints to a customfield ID in
 sil.aliases file.
+
+And that the executor script is given as an absolute location
+as opposed to relative because the listener was invoked via a subfolder.
+
+You'd normally want to have your live field listeners and executors in your
+root folder so you can call it by name only.
 */
 
 if(argv["screen"] == "create" || argv["screen"] == "edit") {
-    lfWatch("storyPoints", {"storyPoints"}, "lfExecutor_CreateEstimateFromStoryPoints.sil" , {"keyup"});
+    lfWatch("storyPoints", {"storyPoints"}, "/var/atlassian/application-data/jira/powerscripts.cprime.io/silprograms/!Examples-ModsRequired/lfExecutor_CreateEstimateFromStoryPoints.sil" , {"keyup"});
     }

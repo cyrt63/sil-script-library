@@ -1,0 +1,40 @@
+/* This script listens for Issue Edit events. For all applicable parents,
+children, and siblings, the description field will be sync'd among them.
+
+Since this is an event listener, you will want to minimize the scope. In
+this case, you'll want to set the scope to a single project (SMSW).
+
+And since you probably don't want all issue types to behave the same way,
+you'll probably have to declare those explicitly as well.
+*/
+ 
+if(project=="SMSW") {
+    if (issueType=="Story" || issueType=="New Feature" || issueType=="Improvement"){
+        // The issue is a parent and must be copied to all children
+        string [] issues = subtasks(key);
+        string issue;
+        
+        // Loop over all sub-tasks and copy fields
+        for (issue in issues) {
+            %issue%.description = description;
+        }
+    }
+    else if(isNotNull(parent.key) && (parent.issueType=="Story" || parent.issueType=="New Feature" || parent.issueType=="Improvement")) {
+        // The issue is a sub-task and must be copied to parent and all siblings
+        // Copy to parent
+        parent.description = description;
+        
+        // Copy to siblings
+        string [] issues = subtasks(parent.key);
+        string issue;
+             
+        // Loop over all sub-tasks and copy fields
+        for (issue in issues) {
+            // Don't update the issue that was just updated.
+            if (%issue%.key != key) {
+                %issue%.description = description;
+            }
+        }
+    }
+    
+}
