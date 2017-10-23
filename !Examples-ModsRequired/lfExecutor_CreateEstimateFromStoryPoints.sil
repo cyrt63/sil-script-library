@@ -33,32 +33,32 @@ if (argv["storyPoints"] != "") {
         lfEnable("issueCreateSubmit");
     }
     else if (dataEntered == 3) {
-        timeEstimate = "8h";
-        timeOriginalEstimate = "8h";
+        timeEstimate = "1d";
+        timeOriginalEstimate = "1d";
         lfEnable("editSubmit");
         lfEnable("transitionSubmit");
         lfEnable("createIssueSubmit");
         lfEnable("issueCreateSubmit");
     }
     else if (dataEntered == 5) {
-        timeEstimate = "16h";
-        timeOriginalEstimate = "16h";
+        timeEstimate = "2d";
+        timeOriginalEstimate = "2d";
         lfEnable("editSubmit");
         lfEnable("transitionSubmit");
         lfEnable("createIssueSubmit");
         lfEnable("issueCreateSubmit");
     }
     else if (dataEntered == 8) {
-        timeEstimate = "24h";
-        timeOriginalEstimate = "24h";
+        timeEstimate = "3d";
+        timeOriginalEstimate = "3d";
         lfEnable("editSubmit");
         lfEnable("transitionSubmit");
         lfEnable("createIssueSubmit");
         lfEnable("issueCreateSubmit");
     }
     else if (dataEntered == 13) {
-        timeEstimate = "40h";
-        timeOriginalEstimate = "40h";
+        timeEstimate = "5d";
+        timeOriginalEstimate = "5d";
         lfEnable("editSubmit");
         lfEnable("transitionSubmit");
         lfEnable("createIssueSubmit");
