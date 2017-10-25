@@ -5,10 +5,16 @@ It adds a comment to a specific issue to explain, in human readable terms,
 how many total hours are esimated and logged in the project, and gives a
 percentage complete value. One could mod the script to populate fields instead
 of adding a comment.
+
+And now it has been modded. It assumes that you have three custom fields
+mapped in sil.aliases for the following three data points:
+* Project Total Time Estimated
+* Project Total Work Logged
+* Project Percent Complete
 */
 
-string projectInScope="PRDT"; // the project you want to sum up
-string masterIssue="PRDT-45"; // issue where you want to capture this info
+string projectInScope="SMSW"; // the project you want to sum up
+string masterIssue="SMSW-23"; // issue where you want to capture this info
 
 if(project==projectInScope) { // if invoked via listener, limit the scope
  string jql="project="+projectInScope; 
@@ -36,6 +42,11 @@ if(project==projectInScope) { // if invoked via listener, limit the scope
  hoursTimeSpent = sumTimeSpent;
  hoursOriginalEstimate = sumOriginalEstimate;
  completePercent = round((hoursTimeSpent/hoursOriginalEstimate)*100,0);
+ 
+ projectTotalTimeEstimated = sumOriginalEstimate;
+ projectTotalWorkLogged = sumTimeSpent;
+ projectTotalTimeRemaining = sumTimeRemaining;
+ projectPercentComplete = completePercent;
  
  string commentTextA = "This project has *"+sumOriginalEstimate+"* estimated work";
  string commentTextB = " with *"+sumTimeSpent+"* spent for a total of *";
