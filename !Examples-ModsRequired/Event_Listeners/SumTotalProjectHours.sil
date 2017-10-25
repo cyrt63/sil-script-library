@@ -6,10 +6,11 @@ how many total hours are esimated and logged in the project, and gives a
 percentage complete value. One could mod the script to populate fields instead
 of adding a comment.
 
-And now it has been modded. It assumes that you have three custom fields
-mapped in sil.aliases for the following three data points:
+And now it has been modded. It assumes that you have four custom fields
+mapped in sil.aliases for the following four data points:
 * Project Total Time Estimated
 * Project Total Work Logged
+* Project Total Time Remaining
 * Project Percent Complete
 */
 
@@ -43,15 +44,16 @@ if(project==projectInScope) { // if invoked via listener, limit the scope
  hoursOriginalEstimate = sumOriginalEstimate;
  completePercent = round((hoursTimeSpent/hoursOriginalEstimate)*100,0);
  
- projectTotalTimeEstimated = sumOriginalEstimate;
- projectTotalWorkLogged = sumTimeSpent;
- projectTotalTimeRemaining = sumTimeRemaining;
- projectPercentComplete = completePercent;
+ %masterIssue%.projectTotalTimeEstimated = sumOriginalEstimate;
+ %masterIssue%.projectTotalWorkLogged = sumTimeSpent;
+ %masterIssue%.projectTotalTimeRemaining = sumTimeRemaining;
+ %masterIssue%.projectPercentComplete = completePercent;
  
  string commentTextA = "This project has *"+sumOriginalEstimate+"* estimated work";
  string commentTextB = " with *"+sumTimeSpent+"* spent for a total of *";
- string commentTextC = ""+sumTimeRemaining+"* hours remaining. ";
- string commentTextD = "It is *"+completePercent+"%* complete.";
- commentText = commentTextA + commentTextB + commentTextC + commentTextD;
+ string commentTextC = ""+sumTimeRemaining+"* remaining. ";
+ string commentTextD = "It is *"+completePercent+"%* complete. ";
+ string commentTextE = "This update brought to you changes made in "+key+".";
+ commentText = commentTextA + commentTextB + commentTextC + commentTextD + commentTextE;
  addComment(masterIssue, currentUser(), commentText);
 }
