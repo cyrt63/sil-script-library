@@ -10,13 +10,11 @@ if(isNotNull(userProps)) {
     
     votesMonth = userProps;
     if(isNotNull(votesMonth[month])) {
-        
-        lfDialogMessage(votesMonth[month], "WARNING");
-        
+
         int count = votesMonth[month];
         
         if(count >= 3) {
-            lfDisable("votes");
+            lfHide("votes");
         }
     }
 }
