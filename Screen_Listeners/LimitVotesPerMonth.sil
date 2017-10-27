@@ -1,0 +1,22 @@
+//
+
+string [] votesMonth;
+string userProps;
+int month = month(currentDate()) - 1;
+
+userProps = getUserProperty(currentUser(), "votesMonth");
+
+if(isNotNull(userProps)) {
+    
+    votesMonth = userProps;
+    if(isNotNull(votesMonth[month])) {
+        
+        lfDialogMessage(votesMonth[month], "WARNING");
+        
+        int count = votesMonth[month];
+        
+        if(count >= 3) {
+            lfDisable("votes");
+        }
+    }
+}
