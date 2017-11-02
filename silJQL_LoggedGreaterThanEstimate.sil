@@ -1,0 +1,20 @@
+/* This is a JQL script that will return all issues that have more work
+logged than the original estimate for a user-supplied project.
+e.g. key in silJQLList("silJQL_LoggedGreaterThanEstimate.sil", "PROJ")
+
+BE CAREFUL! THIS SCRIPT TAKES TIME TO RUN AND INCREASES LOAD!
+*/
+
+string [] keys = selectIssues("project = " + argv[0]);
+string [] ret;
+for(string k in keys) {
+    if(%k%.originalEstimate !="") {
+        interval developerTimeSpent = getTimeSpent(k, "jira-developers");
+        interval administratorTimeSpent = getTimeSpent(k, "jira-administrators");
+        interval totalTimeSpent = developerTimeSpent + administratorTimeSpent;
+        if(totalTimeSpent > %k%.originalEstimate) {
+            ret += k;
+        }
+    }
+}
+return ret;

@@ -1,0 +1,9 @@
+/* This script will run on any issue interaction that causes a modification
+to the issue and set the Last Modified By field to the user who invoked
+the  modification.
+
+It assumes you have a single user picker custom field available called
+"Last Modified By" and that it is mapped to a custom field ID in sil.aliases.
+*/
+
+lastModifiedBy=currentUser();
