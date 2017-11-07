@@ -1,0 +1,4 @@
+//This scripts watches customfield_10711 and if a change is detected
+//it runs the script Screen_Listeners/LimitNumberOfSelections.sil
+
+lfWatch("customfield_10711", {"customfield_10711", "key"}, "Screen_Listeners/LimitNumberOfSelections.sil", "change");   

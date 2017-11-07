@@ -1,0 +1,12 @@
+//lfGlobalMessage("It worked!", "INFO
+//This script is called by a screen listenser Screen_Listeners/LimitNumberOfSelections.sil
+//and is run when a change to customfield_10711 is detected
+//This script will only allow a user to select 3 boxes in a checkbox list
+
+string [] c = argv["customfield_10711"];
+
+if(arraySize(c) > 2) {
+    
+    c = deleteElementAt(c, 3);
+    lfSet("customfield_10711" , c);
+}
