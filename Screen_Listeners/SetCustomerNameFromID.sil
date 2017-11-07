@@ -11,4 +11,6 @@ for(string s in customers) {
     }
 }
 
-return name[arrayFind(id, "00003")];
+if(isNotNull("customfield_xyxy")) {
+    lfSet("customfield_xxxx", name[arrayFind(id, "customfield_xyxy")]);
+}
