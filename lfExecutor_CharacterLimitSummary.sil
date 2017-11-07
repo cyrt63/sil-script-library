@@ -1,0 +1,27 @@
+/*
+This Live Field script checks how many characters have been entered in
+the Summary field, and gives feedback. It also disables the ability to
+create or edit the issue if the number of characters exceeds an arbitrary value
+(we'll use 140 characters as an example)
+*/
+
+number sumLength = length(argv["summary"]);
+number maxLength = 140;
+number remLength = maxLength - sumLength;
+
+string showRem = remLength;
+
+if (sumLength<=maxLength) {
+    lfShowFieldMessage("summary", showRem+" characters remaining", "INFO");
+    lfEnable("editSubmit");
+    lfEnable("transitionSubmit");
+    lfEnable("createIssueSubmit");
+    lfEnable("issueCreateSubmit");
+}
+else {
+    lfShowFieldMessage("summary", "Character count exceeded!", "ERROR");
+    lfDisable("editSubmit");
+    lfDisable("transitionSubmit");
+    lfDisable("createIssueSubmit");
+    lfDisable("issueCreateSubmit");
+}
