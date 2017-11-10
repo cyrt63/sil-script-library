@@ -1,0 +1,9 @@
+//
+
+string [] c = argv["customfield_10712"];
+string [] colors = {"Black", "Blue", "Brown", "Green", "Orange", "Red", "Yellow", "White"};
+
+if(arrayElementExists(c, "Select All")) {
+    
+    lfSet("customfield_10712" , colors);
+}
