@@ -1,0 +1,15 @@
+/* JQL: Linked Issues By Type using Power Scripts for Jira
+
+This script takes a single issue key and link type as input parameters
+and returns all linked issues of that type, INCLUDING subtasks and epics
+
+Example usage:
+key in silJQLList(silJql_AllLinkedIssuesByType.sil, TIS-39, "Problem/Incident")
+*/
+ 
+string [] ret;
+string [] linkedIssues =  allLinkedIssues(argv[0], argv[1]);
+for (string issue in linkedIssues) {
+    ret += issue;
+}
+return ret;
