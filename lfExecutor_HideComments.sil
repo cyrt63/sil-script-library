@@ -1,0 +1,6 @@
+/* This script hides the comment field if the user
+is on the view screen
+*/
+
+lfHide("comments_tab");
+lfHide("addComment");
