@@ -1,3 +1,6 @@
-//
+/*
+This script listens for a change to customfield_10712
+and fires thr script SelectAllInList.sil when a change is detected
+*/
 
 lfWatch("customfield_10712", {"customfield_10712"}, "Screen_Listeners/SelectAllInList.sil", "change");
