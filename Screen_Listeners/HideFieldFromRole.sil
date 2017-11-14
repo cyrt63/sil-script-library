@@ -1,0 +1,7 @@
+/*
+This script hides a customfield (customfield_10711) from users who are not in the developer role
+*/
+
+if(isUserInRole(currentUser(), "EX", "Developers") == false) {
+    lfHide("customfield_10711");
+}
