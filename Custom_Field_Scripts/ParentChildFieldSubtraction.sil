@@ -1,0 +1,15 @@
+//This script grabs values from the expense field in the issues subtasks
+//and then subtracts them from the budget
+
+string [] stasks = subtasks(key);
+int budget = customfield_10714;
+
+if(isNotNull(budget)) {
+    for(string s in stasks) {
+        if(isNotNull(%s%.customfield_10713)) {
+            budget = budget - s.customfield_10713;
+        }
+    }
+}
+
+return budget;
