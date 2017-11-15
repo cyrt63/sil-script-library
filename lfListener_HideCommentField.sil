@@ -1,8 +1,0 @@
-/*
-This Live Field calls the lfExecutor_HideComments.sil script if the user
-is on the view screen
-*/
-
-//if(argv["screen"] == "view") {
-    //lfInstantHook({"summary"}, "lfExecutor_HideComments.sil");
-//}
