@@ -1,3 +1,7 @@
+/*
+Call this script on a set schedule.
+It will add the watchers from the parent issue to all subtasks.
+*/
 
 string [] keys = selectIssues("key in silJQLList(\"silJql_IssuesWithSubtasks.sil\", \"Project = EX\") AND statusCategory not in (Done)");
 
