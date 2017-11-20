@@ -1,6 +1,2 @@
-string [] ret;
-string [] linkedIssues = linkedIssues("EX-14", "Epic-Story Link");
-for (string issue in linkedIssues) {
-    ret += issue;
-}
-return ret;
+string [] h = fieldHistory("EX-18", "customfield_10712");
+return h;
