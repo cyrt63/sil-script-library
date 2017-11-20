@@ -1,2 +1,34 @@
-string [] h = fieldHistory("EX-18", "customfield_10712");
-return h;
+string key = "EX-18";
+
+string [] h = fieldHistory(key, "customfield_10712");
+
+string [] colors1 = {"10262", "10263", "10264", "10265", "10266", "10267", "10268", "10269"};
+//int [] colors2 = {10270, 10271, 10272, 10273, 10274, 10275, 10276, 10277};
+string [] colors2 = {"Black", "Blue", "Brown", "Green", "Orange", "Red", "Yellow", "White"};
+
+string [] c1;
+string [] c2;
+
+int hCount = arraySize(h);
+
+if(hCount >= 3 ) {
+    
+    if((h[hCount - 1] != h[hCount] - 3) || hCount == 3) {
+        
+        c1 = split(replace(replace(h[hCount - 1], "[", ""), "]", ""), ", ");
+        
+        for(string col in c1) {
+            
+            int i = arrayFind(colors1, col);
+            
+            //runnerLog(col + " - " + trim(i));
+            
+            if(i > -1) {
+                c2 += colors2[i];
+            }
+        }
+    }
+}
+
+%key%.customfield_10717 = c2;
+return c2;

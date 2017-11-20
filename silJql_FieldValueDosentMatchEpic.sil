@@ -1,0 +1,17 @@
+/* JQL: Fix version for story does not match fix version for epic using Power Scripts for Jira
+ 
+This script takes a JQL query as a paramter and returns all the
+issue in the epics returned by the query
+ 
+Example usage:
+key in silJQLList("silJql_IssuesInEpics.sil", "Project = EX and type = Epic")
+*/
+  
+string [] epics = selectIssues(argv[0]);
+string [] ret;
+ 
+for(string e in epics) {
+    ret += allLinkedIssues(e, "Epic-Story Link");
+}
+ 
+return ret;
