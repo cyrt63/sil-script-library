@@ -2,28 +2,25 @@
 the function takes a group name as an input parameter
 
 To invoke, you'd script like this:
-string user = getUserLeastIssues("jira-servicedesk-users");
+string user = getUserLeastIssues("auto-assign-users");
 */
 
-function getUserLeastIssues(string groupName) {
-
-    string username;
-    int countIssues;
-    string [] groupUsers;
-    string [] groups = {groupName};
+string username;
+int countIssues;
+string [] groupUsers;
+string [] groups = {argv[0]};
     
-    groupUsers = usersInGroups(groups);
+groupUsers = usersInGroups(groups);
     
-    for(string u in groupUsers) {
+for(string u in groupUsers) {
         
-        string jql = "project = EX AND statusCategory in (\"To Do\", \"In Progress\") and assignee = " + u;
-        int tempCount = countIssues(jql);
+    string jql = "project = EX AND statusCategory in (\"To Do\", \"In Progress\") and assignee = " + u;
+    int tempCount = countIssues(jql);
         
-        if(isNull(username) || (countIssues > tempCount)) {
-            username = u;
-            countIssues = tempCount;
-        }
+    if(isNull(username) || (countIssues > tempCount)) {
+        username = u;
+        countIssues = tempCount;
     }
-    
-    return username;
 }
+    
+return username;

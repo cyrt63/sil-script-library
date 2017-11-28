@@ -1,0 +1,1 @@
+assignee = call("", "Functions/function_GetUserWithLeastIssues.sil", "auto-assign-users");

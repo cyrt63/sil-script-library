@@ -1,9 +1,4 @@
 
-string [] keys = selectIssues("key in silJQLList(\"silJql_IssuesWithSubtasks.sil\", \"Project = EX\") AND statusCategory not in (Done)");
 
-for(string k in keys) {
-    for(string s in subtasks(k)) {
-        
-        %s%.watchers += %k%.watchers;
-    }
-}
+string u = call("", "Functions/function_GetUserWithLeastIssues.sil", "auto-assign-users");
+return u;
