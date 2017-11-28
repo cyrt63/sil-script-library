@@ -1,0 +1,25 @@
+/*This function is used to syncronize the status of issues
+on different systems
+
+To invoke, you'd script like this:
+
+string [] args = {"Waiting on Feedback", "EX-123"};
+call("", "Functions/function_UpdateStatus.sil", args), 
+
+*/
+
+string transition = argv[0];
+string key = argv[1];
+string [] avalTrans;
+
+avalTrans = getAvailableTransitions(key);
+
+if(arrayElementExists(avalTrans, transition)) {
+    autotransition(transition, key, true, true, true);
+    return true;
+}
+else {
+    string error = "This issue could not be updated because the " + transition + " transition was not available";
+    addComment(key, "admin", error);
+    return false;
+}
