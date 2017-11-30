@@ -1,0 +1,8 @@
+/* This live field script will get called
+during a transition and will hide the comments field
+*/
+
+if(argv["screen"] == "trans_41") {
+    lfHide("comments_tab");
+    lfHide("addComment");
+}
