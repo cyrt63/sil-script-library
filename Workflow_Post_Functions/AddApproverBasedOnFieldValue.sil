@@ -1,0 +1,14 @@
+/*
+Call this script from a workflow transition post-function.
+It will set the approver based on the value of a custom field.
+*/
+
+if(fruit == "Apple") {
+    customfield_10700 = "jmuse";
+}
+else if(fruit == "Orange") {
+    customfield_10700 = "efoulkes";
+}
+else if(fruit == "Peach") {
+    customfield_10700 = "jwang";
+}
