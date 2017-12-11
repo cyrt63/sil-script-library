@@ -1,9 +1,0 @@
-//lfWatch("dueDate", {"assignee"}, "lfExecutor_AssigneeChange.sil", {"mousemove"});
-
-//lfWatch("transitionSubmit", {"assignee"}, "lfExecutor_AssigneeChanged.sil", {"mousedown"});
-//lfWatch("editSubmit", {"assignee"}, "lfExecutor_AssigneeChanged.sil", {"click"});
-
-
-if(type == "Task" && contains(argv["screen"], "trans")) {
-   lfGlobalMessage("Assignee not changed. Are you sure you want to proceed without re-assignment?", "WARNING");
-}
