@@ -1,5 +1,9 @@
-lfHide("transitionSubmit");
+lfGlobalMessage(argv, "INFO");
 
-lfGlobalMessage("Holla!", "INFO");
-
-lfWatch("attachments", {"attachments}", scriptPath[,javaScriptEvents]);
+if(isNotNull(argv["fruit"]) && isNotNull(argv["attach"])) {
+    
+    lfShow("transitionSubmit");
+}
+else {
+     lfHide("transitionSubmit");
+}

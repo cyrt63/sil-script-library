@@ -1,0 +1,5 @@
+lfHide("transitionSubmit");
+//lfGlobalMessage("Hi", "INFO");
+
+lfWatch("attachment", {"fruit", "attachment"}, "./Screen_Listeners/lfExecutor_RequireAttachmentsOnTrans.sil", {"change"});
+lfWatch("fruit", {"fruit", "attachment"}, "./Screen_Listeners/lfExecutor_RequireAttachmentsOnTrans.sil", {"change"});
