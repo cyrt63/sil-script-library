@@ -1,0 +1,9 @@
+/*
+Use this script as a workflow transition validator to allow transition only if
+a comment has been supplied.
+*/
+
+string errorMsg = "You must enter a comment!";
+if(!hasInput("comment")) {
+   return false, "comment", errorMsg;
+}
