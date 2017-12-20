@@ -1,0 +1,5 @@
+lfHide("transitionSubmit");
+
+lfGlobalMessage("Holla!", "INFO");
+
+lfWatch("attachments", {"attachments}", scriptPath[,javaScriptEvents]);

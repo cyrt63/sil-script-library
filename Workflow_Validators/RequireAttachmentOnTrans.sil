@@ -3,7 +3,11 @@ Use this script as a workflow transition validator to allow transition only if
 a comment has been supplied.
 */
 
-string errorMsg = "You must enter a comment!";
-if(!hasInput("comment")) {
+string errorMsg = "Attachments: " + attachments;
+if(!hasInput("fruit")) {
+
+    if(size(attachments) == 0) {
+       return false, "comment", errorMsg;
+    }
    return false, "comment", errorMsg;
 }
