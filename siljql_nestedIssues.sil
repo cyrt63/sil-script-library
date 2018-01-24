@@ -1,0 +1,37 @@
+string [] tasks;
+string [] stories;
+string [] epics = selectIssues("issueType = 'Epic' AND project = Examples");
+
+for(string e in epics) {
+
+    string [] stry = allLinkedIssues(e, "Epic-Story Link");
+    for(string s in stry) {
+        
+        string [] tsk = allLinkedIssues(s, "jira_subtask_link", 1);
+        tasks += tsk;
+    }
+    stories += stry;
+}
+string [] results;
+results = arrayUnion(epics, stories);
+results = arrayUnion(results, tasks);
+return results;
+
+
+
+/*
+string [] tasks;
+string [] stories;
+string [] epics = selectIssues("issueType = 'Epic' AND project = " + argv[0]);
+for(string e in epics) {
+    string [] stry = allLinkedIssues(e, "Epic-Story Link");
+    for(string s in stry) {
+        string [] tsk = allLinkedIssues(s, "jira_subtask_link", 1);
+        tasks += tsk;
+    }
+    stories += stry;
+}
+string [] results;
+results = arrayUnion(epics, stories);
+results = arrayUnion(results, tasks);
+return results;*/
