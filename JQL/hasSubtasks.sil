@@ -1,0 +1,28 @@
+/*
+This script is used in silJQLList to return a list of all issues with subtasks where subtasks satisfy passed condition.
+Use with silJQLList.
+This script receives 2 parameters
+ - JQL query for choosing tasks
+ - JQL query for choosing subtasks
+Example: key in silJQLList("hasSubtasks.sil", "project = test", "status = open")
+*/
+
+string [] keys = selectIssues(argv[0]);
+string [] ret;
+
+for(string issueKey in keys) {
+    boolean issueToReturn = false;
+    for (string subTaskKey in subtasks(issueKey)) {
+        if (!issueToReturn and isNotNull(argv[1]) and size(selectIssues(argv[1] + " and key = " + subTaskKey)) > 0) {
+            issueToReturn = true;
+         
+        } 
+        if (!issueToReturn and isNull(argv[1])) { 
+            issueToReturn = true;
+        }
+    }
+    if (issueToReturn) {
+        ret +=issueKey;
+    }
+}
+return ret;
