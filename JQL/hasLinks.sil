@@ -1,0 +1,18 @@
+/*
+This script is used in silJQLList to return a list of all issues with required issue link types.
+Use with silJQLList.
+This script receives 2 parameters
+ - JQL query for choosing tasks
+ - link type
+Example: key in silJQLList("hasLinks.sil", "project = test", clones")
+*/
+
+string [] keys = selectIssues(argv[0]);
+string [] ret;
+
+for(string issueKey in keys) {
+   if (size(allLinkedIssues(issueKey, argv[1]))>0) {
+       ret += issueKey;
+   }
+}
+return ret;
