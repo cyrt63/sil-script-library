@@ -1,0 +1,70 @@
+//function top create issues from template issue
+function issueToCopy(string key, string parent) {
+
+    //fields to copy that are used in the create issue function
+    string [] baseFields = "summary|description|priority|type";
+    //fields to copy that are not used in the create issue function
+    string [] extraFields = "reporter|assignee|labels";
+    //new issue key
+    string copy;
+    
+    //variables needed to create new issue
+    string project = "EX2";
+    string type;
+    string summary;
+    string priority;
+    string description;
+    string [] components;
+    date due_date;
+    interval estimate;
+    string security;
+    string [] customFields;
+    
+    //loop through base fields and get values from template issue
+    for(string b in baseFields) {
+        %b% = %key%.%b%;
+    }
+    
+    //create new issue from template issue
+    copy = createIssue(project, parent, type, summary, priority, description, components, due_date, estimate, security, customFields);
+    
+    //loop through extra fields and assign values from template to new issue
+    for(string e in extraFields) {
+        %copy%.%e% = %key%.%e%;
+    }
+    
+    //return key of new issue
+    return copy;
+
+}
+
+if(type == "MKTG Webinar Template") {
+
+    //key of issue to use as template
+    string tempIssue = "TEMP-19";
+    //key of new issue
+    string newIssue;
+    
+    //create the issue from the template
+    newIssue = issueToCopy(tempIssue, "");
+    
+    //get all stories in the epic (template issue)
+    string [] stories = allLinkedIssues(tempIssue, "Epic-Story Link");
+    
+    //loop through stories in epic and create new stories from template
+    for(string s in stories) {
+        //create new story from template story
+        string newStory = issueToCopy(s, "");
+        //add new story to new epic
+        linkIssue(newIssue, newStory, "Epic-Story Link");
+        
+        //get all subtasks from template story
+        string [] subtasks = subtasks(s);
+        
+        //loop through subtasks from story template
+        for(string st in subtasks) {
+            //create new subtasks from template
+            string newSubTask = issueToCopy(st, newStory);
+        }
+    }
+}
