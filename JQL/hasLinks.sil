@@ -4,7 +4,8 @@ Use with silJQLList.
 This script receives 2 parameters
  - JQL query for choosing tasks
  - link type
-Example: key in silJQLList("hasLinks.sil", "project = test", "Cloners")
+ - condition for the linked issue in JQL query
+Example: key in silJQLList("hasLinks.sil", "project = test", "Cloners", "project = test")
 */
 
 string [] keys = selectIssues(argv[0]);
@@ -12,7 +13,14 @@ string [] ret;
 
 for(string issueKey in keys) {
    if (size(allLinkedIssues(issueKey, argv[1])) > 0) {
-       ret += issueKey;
+       if (isNull(argv[2])) {
+         ret += issueKey;    
+       } else {
+         if (size(selectIssues(argv[2] + " and key = " + issueKey)) > 0) {
+            ret += issueKey;  
+         }
+           
+       }
    }
 }
 return ret;
