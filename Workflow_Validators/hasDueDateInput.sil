@@ -1,0 +1,3 @@
+string[] dueDateOld = getIssueFields(key);
+string errMessage = "due date" + dueDate + "old due date " + dueDateOld["dueDate"] ;
+return false, errMessage ;
