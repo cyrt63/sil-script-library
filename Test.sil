@@ -1,0 +1,13 @@
+string key = argv[0];
+runnerLog("more " + argv[0] );
+interval interv = %key%.#{Project Percent Complete} * 24*60*60*1000;
+runnerLog("project percent complete " + %key%.#{Project Percent Complete} + "interval " + interv);
+date resolv = %key%.#{test_mav_field} + interv;
+date curDate = currentDate()+"2d";
+runnerLog("resolv " +  resolv + " curDate " + curDate);
+if (resolv <= curDate) {
+    runnerLog("more");
+} else {
+    runnerLog("less");
+    
+}
