@@ -1,6 +1,4 @@
-string key = "VT-5";
-
-string project = %key%.project;
+string project = project;
 string parent = key;
 string type = "Sub-task";
 string summary = "I made this!";
@@ -14,9 +12,9 @@ string [] cf;
 interval time = "2w";
 due_date = currentDate() + time;
 
-if(%key%.type != "Sub-task") {
+if(type != "Sub-task") {
 
 string newKey = createIssue(project, parent, type, summary, priority, description, components, due_date, estimate, security, cf);
-//%newKey%.assignee = assignee;
+%newKey%.assignee = assignee;
 
 }

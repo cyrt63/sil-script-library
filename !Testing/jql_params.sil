@@ -1,0 +1,1 @@
+gadget_createTextArea("JQL", "Required text", 5, true, "Enter the JQL for the issues you wish to select.");
