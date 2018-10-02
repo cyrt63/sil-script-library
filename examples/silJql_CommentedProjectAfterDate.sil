@@ -1,0 +1,20 @@
+/*
+This script is used in silJQL to return a list of all issues that have comments
+in a specified project after a date specified in JQL search. Use with silJQLList.
+Example: key in silJQLList("silJQL_CommentedProjectAfterDate.sil", PROJ, "2017-02-16")
+*/
+
+string [] keys = selectIssues("project = " + argv[0]);
+string [] ret;
+for(string k in keys) {
+    number [] commentIds = getAllCommentIds(k);
+    if(size(commentIds) != 0) {
+        for(number id in commentIds) {
+            JComment comment = getCommentById(id);
+            if(comment.created > argv[1]) {
+                ret += k;
+            }
+        }
+    }
+}
+return ret;

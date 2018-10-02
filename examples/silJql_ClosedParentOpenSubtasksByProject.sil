@@ -1,0 +1,21 @@
+/*
+This script is used in silJQL to return a list of all issues where the parent
+issue is resolved with a specific resolution but has sub-tasks in a specific
+status. Use with silJQLList.
+Example: key in silJQLList("silJql_ClosedParentOpenSubtasksByProject".sil", PROJ, Done, 'To Do')
+*/
+
+string [] keys = selectIssues("project= " + argv[0] + " and resolution= "+ argv[1]);
+string [] ret;
+for(string k in keys) {
+    string [] subtasksKeys = subtasks(k);
+    if(size(subtasksKeys) != 0) {
+        for(string sk in subtasksKeys) {
+            if(%sk%.status == argv[2]) {
+                ret += k;
+            }
+        }
+    }
+}
+
+return ret;

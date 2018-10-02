@@ -1,0 +1,16 @@
+/*
+This script is used in silJQL to return a list of all issues with subtasks.
+Script takes a JQL search as a parameter.
+Use with silJQLList.
+Example: key in silJQLList("silJql_IssuesWithSubtasks.sil", "Project = EX")
+*/
+
+string [] keys = selectIssues(argv[0]);
+string [] ret;
+for(string k in keys) {
+    if(size(subtasks(k)) != 0) {
+        ret += k;
+    }
+}
+
+return ret;

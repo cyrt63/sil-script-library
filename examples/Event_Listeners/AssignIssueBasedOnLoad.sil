@@ -1,0 +1,23 @@
+/*
+Call this script from an "issue created" listener.
+It will assign the issue to the project member who is assigned to the
+fewest number of issues.
+*/
+
+string[] prjMembers = projectMembers(project);
+string minUser;
+number minIssues = -1;
+number issuesNumber = -1;
+string query = "project = " + project + " AND resolution is EMPTY AND assignee = ";
+string jql;
+
+for (string user in prjMembers) {
+  jql = query + user;
+  issuesNumber = arraySize(selectIssues(jql));
+  if ((minIssues == -1) || (issuesNumber < minIssues)) {
+    minIssues = issuesNumber;
+    minUser = user;
+  }
+}
+
+assignee = minUser;

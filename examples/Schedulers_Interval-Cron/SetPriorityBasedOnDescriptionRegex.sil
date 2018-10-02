@@ -1,0 +1,19 @@
+/*
+Call this script on a schedule.
+It will scan the description for text equal to REPORTEDPRIORITY= and set
+the priority to match the value found.
+*/
+
+string TEXT = "REPORTEDPRIORITY=";
+string REGEX = ".*\b" + TEXT + "[1-5]\b.*";
+if(!matches(description, REGEX)) {
+   logPrint("DEBUG", "Description doesn't contain reported priority in right format.");
+   return;
+}
+number index = indexOf(description, TEXT) + length(TEXT); //starting index of priority id
+string substr = substring(description, index, length(description));
+index = indexOf(substr, " ");
+if(index < 0) {
+   index = length(substr);
+}
+priorityId = substring(substr, 0, index);

@@ -1,0 +1,24 @@
+/* JQL: Field value does not match epic using Power Scripts for Jira
+ 
+This script takes a JQL query as a paramter that should be a list of epics
+and returns issues where the custom field (second parameter)
+does not match the value of the epic
+ 
+Example usage:
+key in silJQLList("silJql_FieldValueDosentMatchEpic.sil", "Project = EX and type = Epic", "Fruit")
+*/
+  
+string [] epics = selectIssues(argv[0]);
+string matchField = argv[1];
+string [] ret;
+ 
+for(string e in epics) {
+    for(string i in allLinkedIssues(e, "Epic-Story Link")) {
+        
+        if(%i%.%matchField% != %e%.%matchField%) {
+            ret += i;
+        }
+    }
+}
+ 
+return ret;

@@ -1,0 +1,84 @@
+/* This script takes the user's input for the Story Point field on create
+or edit screens and immediately updates the Estimate and Original Estimate
+fields based on a mapping of story points to hours. It also restricts
+the storyPoints field such that only Fibonacci sequences are allowed.
+
+Use in conjunction with lfListener_CreateEstimatesFromStoryPoints.sil and
+SetWorklogToEstimatedHours.sil
+
+Note that this requires a mapping for storyPoints custom field to customfield
+ID in sil.aliases file
+*/
+
+interval timeEstimate;
+interval timeOriginalEstimate;
+string errorMsg;
+
+if (argv["storyPoints"] != "") {
+    number dataEntered = argv["storyPoints"];
+    if (dataEntered == 1) {
+        timeEstimate = "2h";
+        timeOriginalEstimate = "2h";
+        lfEnable("editSubmit");
+        lfEnable("transitionSubmit");
+        lfEnable("createIssueSubmit");
+        lfEnable("issueCreateSubmit");
+    }
+    else if (dataEntered == 2) {
+        timeEstimate = "4h";
+        timeOriginalEstimate = "4h";
+        lfEnable("editSubmit");
+        lfEnable("transitionSubmit");
+        lfEnable("createIssueSubmit");
+        lfEnable("issueCreateSubmit");
+    }
+    else if (dataEntered == 3) {
+        timeEstimate = "1d";
+        timeOriginalEstimate = "1d";
+        lfEnable("editSubmit");
+        lfEnable("transitionSubmit");
+        lfEnable("createIssueSubmit");
+        lfEnable("issueCreateSubmit");
+    }
+    else if (dataEntered == 5) {
+        timeEstimate = "2d";
+        timeOriginalEstimate = "2d";
+        lfEnable("editSubmit");
+        lfEnable("transitionSubmit");
+        lfEnable("createIssueSubmit");
+        lfEnable("issueCreateSubmit");
+    }
+    else if (dataEntered == 8) {
+        timeEstimate = "3d";
+        timeOriginalEstimate = "3d";
+        lfEnable("editSubmit");
+        lfEnable("transitionSubmit");
+        lfEnable("createIssueSubmit");
+        lfEnable("issueCreateSubmit");
+    }
+    else if (dataEntered == 13) {
+        timeEstimate = "5d";
+        timeOriginalEstimate = "5d";
+        lfEnable("editSubmit");
+        lfEnable("transitionSubmit");
+        lfEnable("createIssueSubmit");
+        lfEnable("issueCreateSubmit");
+    }
+    else {
+        errorMsg = "Please enter a valid value for Story Points";
+        lfDisable("editSubmit");
+        lfDisable("transitionSubmit");
+        lfDisable("createIssueSubmit");
+        lfDisable("issueCreateSubmit");
+    }
+
+
+  if (errorMsg != "") {
+    lfShowFieldMessage("storyPoints", errorMsg, "ERROR");
+  }
+  else {
+    lfSet("estimate", timeEstimate);
+    lfSet("originalEstimate", timeOriginalEstimate);
+    lfShowFieldMessage("storyPoints", "Estimated Hours changed to "+timeEstimate, "INFO");
+  }
+}

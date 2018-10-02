@@ -1,0 +1,22 @@
+/*
+Call this script from a workflow transition post-function.
+This will check all other sub-tasks of a parent issue and will transition
+the parent if all other sub-tasks are resolved.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Resolved" (status)
+* "Resolve Issue" (transitionName)
+*/
+
+if(isNull(parent)) {
+   return;
+}
+string[] subtasks = subtasks(parent);
+for(string subtask in subtasks) {
+    if(%subtask%.status != "Resolved") {
+       return;
+    }
+}
+//all sub-tasks are resolved so we can transition the parent
+autotransition("Resolve Issue", parent);

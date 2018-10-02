@@ -1,0 +1,12 @@
+/*
+Call this script from a workflow transition post-function.
+It will increment the value of a numerical custom field.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "2.5" (whatever decimal value you'd like to add to a numeric field)
+* customfield_10000 (customField)
+*/
+
+number increment = 2.5;
+customfield_10000 += increment;

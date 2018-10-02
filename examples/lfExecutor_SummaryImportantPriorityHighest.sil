@@ -1,0 +1,10 @@
+/*
+This Live Field script changes field priority to Highest if
+the word "important" is entered in the summary field per listener script
+lfListener_SummaryImportant.sil.
+*/
+
+if (contains(argv["summary"], "important")) {
+  lfSet("priority", "Highest");
+  lfShowFieldMessage("priority", "Priority changed to Highest", "INFO");
+}

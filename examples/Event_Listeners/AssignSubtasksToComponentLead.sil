@@ -1,0 +1,9 @@
+//This script will get the FIRST lead for a componenet
+//when the component is updated
+//it will then assign all subtasks to the lead
+
+
+//string leader = getProjectComponentLead("TSTPRJ", "comp1");
+logPrint("INFO", "Result of listener 1: " + getOldComponentFromEvent());
+logPrint("INFO", "Result of listener 2: " + getComponentFromEvent());
+logPrint("INFO", "Result of listener 3: " + getMergeToComponentFromEvent());

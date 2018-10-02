@@ -1,0 +1,6 @@
+/*
+Call this script from a workflow transition post-function.
+It will set one field value based on the value of another field.
+*/
+
+description = summary;

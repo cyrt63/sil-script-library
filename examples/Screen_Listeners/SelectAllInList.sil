@@ -1,0 +1,12 @@
+/*
+This script is fired from the listener script SelectAllInList_watch.sil
+and selects all items in a list if the 'Select All' item is selected
+*/
+
+string [] c = argv["customfield_10712"];
+string [] colors = {"Black", "Blue", "Brown", "Green", "Orange", "Red", "Yellow", "White"};
+
+if(arrayElementExists(c, "Select All")) {
+    
+    lfSet("customfield_10712" , colors);
+}

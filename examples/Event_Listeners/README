@@ -1,0 +1,14 @@
+Scripts in this folder are intended to be invoked from the following applicable
+triggers:
+* Event Listeners
+
+However, they may also be invoked by the following triggers:
+* Dashboard Gadgets
+* Schedulers
+* Live Fields - Screen Executors
+* Startup / Shutdown
+* Workflow Post Functions
+
+Important Note! Events are global. You will likely want to restrict these
+scripts to run only if certain other criteria is met (e.g. project=PROJ and
+issueType=Bug)

@@ -1,0 +1,6 @@
+/*
+Call this script from a workflow transition post-function.
+It will remove the user who invoked the transition as a watcher.
+*/
+
+watchers = deleteElement(watchers, currentUser());

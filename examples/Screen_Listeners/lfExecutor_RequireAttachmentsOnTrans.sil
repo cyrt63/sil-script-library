@@ -1,0 +1,9 @@
+lfGlobalMessage(argv, "INFO");
+
+if(isNotNull(argv["fruit"]) && isNotNull(argv["attach"])) {
+    
+    lfShow("transitionSubmit");
+}
+else {
+     lfHide("transitionSubmit");
+}

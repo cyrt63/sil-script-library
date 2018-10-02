@@ -1,0 +1,14 @@
+/*
+Use this script as a workflow transition validator to allow transition only if
+the assignee is located in Romania.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Romania" (userProperty / Country)
+*/
+
+string COUNTRY = "Romania";
+string errorMsg = "Assignee country must be " + COUNTRY;
+if(getUserProperty(assignee, "country") != COUNTRY) {
+   return false, "assignee", errorMsg;
+}

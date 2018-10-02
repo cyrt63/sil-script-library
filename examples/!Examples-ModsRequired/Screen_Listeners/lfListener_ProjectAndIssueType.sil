@@ -1,0 +1,13 @@
+/*
+This Live Field script will determine the project and issue type of an issue
+create screen (with some caveats) and execute lfExecutor_PopulateIssueFields.sil
+as criteria in that script are met.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* projectKey
+* issueType
+*/
+
+lfInstantHook({"projectKey", "issueType"}, "lfExecutor_PopulateIssueFields.sil");
+lfWatch("issueType", {"issueType", "projectKey"}, "lfExecutor_PopulateIssueFields.sil");

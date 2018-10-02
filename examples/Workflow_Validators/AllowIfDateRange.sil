@@ -1,0 +1,13 @@
+/*
+Use this script as a workflow transition validator to allow transition only if
+a date field is within 180 days from today
+*/
+
+interval range = "180d";
+date maxDate = currentDate() + range;
+
+string errorMsg = "Due date must be within 180 days of today";
+
+if(isNull(due) || due > maxDate) {
+    return false, "error", errorMsg;
+}

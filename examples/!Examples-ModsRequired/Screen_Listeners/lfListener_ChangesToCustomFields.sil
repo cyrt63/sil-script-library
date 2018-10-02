@@ -1,0 +1,13 @@
+/*
+This Live Field script will check for changes to two custom fields and will
+call lfExecutor_RequireCustomField.sil if the value of one of these fields
+suggests that another custom field may be required.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* customfield_10100 (delivery)
+* customfield_11100 (address)
+*/
+
+lfWatch("customfield_10100", {"customfield_11100", "customfield_10100"}, "lfExecutor_RequireCustomField.sil");
+lfWatch("customfield_11100", {"customfield_11100", "customfield_10100"}, "lfExecutor_RequireCustomField.sil", {"keyup"});

@@ -1,0 +1,7 @@
+Scripts in this folder are intended to be invoked from the following applicable
+triggers:
+* JQL Search
+
+It is unlikely that these scripts can be used for any other trigger source.
+
+Please note that these scripts must reside in the root _silprograms_ directory!

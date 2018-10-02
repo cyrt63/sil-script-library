@@ -1,0 +1,9 @@
+/*
+This Live Field script will listen to the Summary field and provide feedback
+for how many characters the user has entered by invoking
+lfExecutor_CharacterLimitSummary.sil
+*/
+
+if(argv["screen"] == "create" || argv["screen"] == "edit") {
+  lfWatch("summary", {"summary"}, "lfExecutor_CharacterLimitSummary.sil" , {"keyup"});
+}

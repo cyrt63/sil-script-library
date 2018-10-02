@@ -1,0 +1,15 @@
+/*
+Use this script as a workflow transition validator to allow transition only if
+a custom field matches a specific regex format (e.g. social security number)
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* customfield_10100 (customField)
+* REGEXP (please don't store SSNs...)
+*/
+
+string errorMsg = "Invalid social security number format.";
+string REGEXP = "^\\d{3}-\\d{2}-\\d{4}$";
+if(!matches(customfield_10100, REGEXP)) {
+   return false, "customfield_10100", errorMsg;
+}

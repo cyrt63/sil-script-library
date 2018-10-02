@@ -1,0 +1,13 @@
+/*
+Use this script as a workflow transition condition to
+restrict transition if issue has never been in a specific status
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* STATUS_RESOLVED (id of any previous status you want to check against)
+*/
+
+number STATUS_RESOLVED = 5;
+string[] status_history = fieldHistory(key, "status");
+
+return elementExists(status_history, STATUS_RESOLVED);

@@ -1,0 +1,8 @@
+/*
+Call this script from an "issue created" event listener.
+It will set the due date to today.
+*/
+
+if(isNull(dueDate)) {
+   dueDate = currentDate();
+}

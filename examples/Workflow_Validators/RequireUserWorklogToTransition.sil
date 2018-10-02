@@ -1,0 +1,17 @@
+/* This script is used to make sure the user attempting to transition the
+workflow has logged time on the issue. If the user has not logged time,
+an error message will appear and the transition will not be allowed.
+*/
+
+interval checkUserWorklogs;
+string errorMsg = "You must log work to advance this issue!";
+
+for(number id in getWorklogIdsForUser(currentUser(), key)) { 
+  checkUserWorklogs += getWorklogLoggedHours(id);
+}
+
+if(checkUserWorklogs!="") {
+  return true;
+} else {
+  return false, "error", errorMsg;
+}

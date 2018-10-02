@@ -1,0 +1,14 @@
+/*
+Call this script from an "issue created" listener.
+If an issue is created with priority = Critical, it will automatically
+transition to the approval request status.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Critical" (priority)
+* "Ask For Approval" (transitionName)
+*/
+
+if(priority == "Critical") {
+   autotransition("Ask For Approval", key);
+}

@@ -1,0 +1,16 @@
+/*
+Use this script as a workflow transition condition to allow transition only if
+all sub-tasks of the issue are in status Resolved or with resolution Fixed.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Resolved" (status)
+* "Fixed" (resolution)
+*/
+
+string[] subtasks = subtasks(key);
+for(string subtask in subtasks) {
+    if(%subtask%.status != "Resolved" || %subtask%.resolution != "Fixed") {
+       return false;
+    }
+}

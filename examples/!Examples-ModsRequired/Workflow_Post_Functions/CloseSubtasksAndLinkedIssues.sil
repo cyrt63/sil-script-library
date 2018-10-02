@@ -1,0 +1,14 @@
+/*
+Call this script from a workflow transition post-function.
+It will close all sub-tasks and linked issues of the issue where the transition
+took place.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Close Issue" (transitionName)
+*/
+
+string[] issues = arraysConcat(subtasks(key), linkedIssues(key, "Duplicates"));
+for(string issue in issues) {
+    autotransition("Close Issue", issue);
+}

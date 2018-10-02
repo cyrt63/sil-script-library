@@ -1,0 +1,13 @@
+/*
+Use this script as a workflow transition validator to allow transition only if
+the numeric of a custom field is greater than or equal to zero.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* customfield_10101 (customField)
+*/
+
+string errorMsg = "The number should be greater or equal to 0";
+if(sign(customfield_10101) == -1) {
+   return false, "customfield_10101", errorMsg;
+}

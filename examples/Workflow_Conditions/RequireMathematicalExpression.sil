@@ -1,0 +1,7 @@
+/*
+Use this script as a workflow transition condition to allow transition only if
+the issue has math that returns if true.
+*/
+
+number n = rand() + e();
+return n >= 1;

@@ -1,0 +1,16 @@
+string [] customers = {"customerA|00001", "customerB|00002", "customerC|00003", "customerD|00004", "customerE|00005"};
+string [] name;
+string [] id;
+
+for(string s in customers) {
+    string [] temp = s;
+    
+    if(isNotNull(temp)) {
+        name += temp[0];
+        id += temp[1];
+    }
+}
+
+if(isNotNull("customfield_xyxy")) {
+    lfSet("customfield_xxxx", name[arrayFind(id, "customfield_xyxy")]);
+}

@@ -1,0 +1,9 @@
+/*This script is used in a workflow and will update the status
+of issues linked to it
+*/
+
+string [] issues = linkedIssues(key);
+
+for(string i in issues) {
+    boolean success = autotransition(11, i, true, true, true);
+};

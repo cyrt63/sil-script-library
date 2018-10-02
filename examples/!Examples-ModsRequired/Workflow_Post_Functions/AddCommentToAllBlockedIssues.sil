@@ -1,0 +1,14 @@
+/*
+Call this script from a workflow transition post-function.
+It will add a comment to all blocked issues when the blocker transitions.
+
+The user is expected to modify the following fields to match their Jira
+instance:
+* "Blocks" (linkType)
+*/
+
+string COMMENT = "Blocking issue " + key + " was transitioned.";
+string[] issues = linkedIssues(key, "Blocks");
+for(string issue in issues) {
+    addComment(issue, currentUser(), COMMENT);
+}

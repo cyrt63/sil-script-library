@@ -1,0 +1,19 @@
+/*
+Call this script from an "issue created" listener.
+It will look up a department/user table and assign user based on department.
+
+Note that this assumes much about a department/user table that may exist.
+Must be tweaked for user's purposes.
+*/
+
+string sqlSelect;
+string[] sqlResult;
+string user;
+
+sqlSelect = "select manager from dept_managers where department = '" + Department + "'";
+sqlResult = sql("myDB", sqlSelect);
+
+user = getElement(sqlResult, 0);
+
+if(isNotNull(user))
+  assignee= user;

@@ -1,0 +1,5 @@
+//
+
+string commentMsg = "This is an internal JSD comment: \\\\Summary - " + summary + "\\\\Description - " + description ;
+
+addJSDComment(key, currentUser(), commentMsg, false);
