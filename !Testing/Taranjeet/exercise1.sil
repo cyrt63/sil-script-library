@@ -3,6 +3,21 @@
 
 //Writing Issue Data
 
-string desc = "Hello, this text was programmatically added from Power Scripts by " + currentUser() + " on " + currentDate() + " and now they have the *POWER*!";
-#{TPS-1}.description = desc;
+//string desc = "Hello, this text was programmatically added from Power Scripts by " + currentUser() + " on " + currentDate() + " and now they have the *POWER*!";
+//#{TPS-1}.description = desc;
 
+//Displaying Data
+
+//string issue = "TPS-1";
+//runnerLog("Summary: " + %issue%.summary);
+//runnerLog("Description: " + %issue%.description);
+//runnerLog("Assignee: " + %issue%.assignee);
+//runnerLog("Created Date: " + %issue%.created);
+//runnerLog("Key: " + issue);
+
+//Passing Values/Parameters to the Script
+
+string [] issuesToTest = selectIssues(argv[0]);
+for (string issue in issuesToTest) { 
+    runnerLog(issue + " - " + %issue%.summary);
+}
