@@ -1,1 +1,8 @@
-return #{TPS-1}.description;
+//Reading Issue Data
+//return #{TPS-1}.description;
+
+//Writing Issue Data
+
+string desc = "Hello, this text was programmatically added from Power Scripts by " + currentUser() + " on " + currentDate() + " and now they have the *POWER*!";
+#{TPS-1}.description = desc;
+
