@@ -17,7 +17,21 @@
 
 //Passing Values/Parameters to the Script
 
-string [] issuesToTest = selectIssues(argv[0]);
+//Question: How do we print the details of issues with issue keys in ascending Order??
+
+/*string [] issuesToTest = selectIssues(argv[0]);
 for (string issue in issuesToTest) { 
     runnerLog(issue + " - " + %issue%.summary);
+}*/
+
+
+//Parameter Routines
+
+string jql = gadget_getSingleValue(argv, "JQL");
+string [] issuesToTest = selectIssues(jql);
+for (string issue in issuesToTest) {
+    runnerLog(issue + " - " + %issue%.summary); 
 }
+
+
+
