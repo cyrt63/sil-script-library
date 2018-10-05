@@ -1,4 +1,4 @@
 string jql = gadget_getSingleValue(argv, "JQL"); 
 string [] issuesToTest = selectIssues(jql);
 for (string issue in issuesToTest) {
-runnerLog(issue + " - " + %issue%.summary); }
+runnerLog(issue + " - " +%issue%.summary); }
