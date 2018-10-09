@@ -1,0 +1,7 @@
+string desc = #{LSTEST-13}.description;
+return desc;
+
+
+/*string descorg=#{LSTEST-13}.description;
+string desc = #{LSTEST-13}.description + "Hello, this text was programmatically added from Power Scripts by " + currentUser() + " on " + currentDate() + " and now they have the *POWER*!";
+#{LSTEST-13}.description = desc;*/
