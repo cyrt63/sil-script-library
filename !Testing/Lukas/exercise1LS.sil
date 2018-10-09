@@ -1,9 +1,27 @@
-/*string desc = #{LSTEST-24}.description + "\n Hello, this text was programmatically added from Power Scripts by " + currentUser() + " on " + currentDate() + " and now they have the *POWER*!";
+1/*string desc = #{LSTEST-24}.description + "\n Hello, this text was programmatically added from Power Scripts by " + currentUser() + " on " + currentDate() + " and now they have the *POWER*!";
 #{LSTEST-24}.description = desc;*/
 
+
+/*
 string issue = "LSTEST-24";
 runnerLog("Summary: " + %issue%.summary);
 runnerLog("Description: " + %issue%.description);
 runnerLog("Assignee: " + %issue%.assignee);
 runnerLog("Created Date: " + %issue%.created);
 runnerLog("Key: " + issue);
+*/
+
+// Not working
+/*
+string [] issuesToTest = selectIssues(argv[0]);
+for (string issue in issuesToTest) {
+runnerLog(issue + "-" + %issue%.summary);
+}
+*/
+
+
+string jql = gadget_getSingleValue(argv, "JQL");
+string [] issuesToTest = selectIssues(jql);
+for (string issue in issuesToTest) {
+runnerLog(issue + " - " + %issue%.summary);
+}
