@@ -1,7 +1,9 @@
-string desc = #{LSTEST-13}.description;
-return desc;
+/*string desc = #{LSTEST-24}.description + "\n Hello, this text was programmatically added from Power Scripts by " + currentUser() + " on " + currentDate() + " and now they have the *POWER*!";
+#{LSTEST-24}.description = desc;*/
 
-
-/*string descorg=#{LSTEST-13}.description;
-string desc = #{LSTEST-13}.description + "Hello, this text was programmatically added from Power Scripts by " + currentUser() + " on " + currentDate() + " and now they have the *POWER*!";
-#{LSTEST-13}.description = desc;*/
+string issue = "LSTEST-24";
+runnerLog("Summary: " + %issue%.summary);
+runnerLog("Description: " + %issue%.description);
+runnerLog("Assignee: " + %issue%.assignee);
+runnerLog("Created Date: " + %issue%.created);
+runnerLog("Key: " + issue);
