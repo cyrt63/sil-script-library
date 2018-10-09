@@ -1,0 +1,15 @@
+string cf = admCreateCustomField("Fruit", "", "Select List (single choice)", "", "", "");
+admAddCustomFieldOption("Apple", cf);
+admAddCustomFieldOption("Banana", cf);
+admAddCustomFieldOption("Grape", cf);
+admAddCustomFieldOption("Kiwi", cf);
+admAddCustomFieldOption("Strawberry", cf);
+admAddCustomFieldOption("Watermelon", cf);
+admAddCustomFieldAlias(cf, "fruit");
+cf = admCreateCustomField("Colors", "", "Select List (multiple choices)", "", "", "");
+admAddCustomFieldOption("Red", cf);
+admAddCustomFieldOption("Orange", cf);
+admAddCustomFieldOption("Yellow", cf);
+admAddCustomFieldOption("Green", cf);
+admAddCustomFieldOption("Blue", cf);
+admAddCustomFieldOption("Purple", cf);
