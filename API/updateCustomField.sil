@@ -1,0 +1,4 @@
+runAs("admin");
+string field = argv[0];
+string value = argv[1];
+%field% = value;

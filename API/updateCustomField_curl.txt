@@ -1,0 +1,11 @@
+curl -X POST -u admin:admin http://localhost:8080/rest/keplerrominfo/refapp/latest/async-script/runScript \
+  -H 'Content-Type: application/json' \
+  -d '{"source":{
+        "type": "FILE",
+        "code": "updateCustomField.sil"
+    },
+   "properties": [{
+        "key": "sil.issue.key",
+        "value": "TP-123"
+    }],
+   "args": ["customfield_12345", "PORT-456"]}'
