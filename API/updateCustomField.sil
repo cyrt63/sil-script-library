@@ -1,4 +1,6 @@
-runAs("admin");
+//This script updates the value of a custom field
+//Custom field and value is passed to script as a parameter
+
 string field = argv[0];
 string value = argv[1];
 %field% = value;
